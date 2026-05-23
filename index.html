@@ -972,6 +972,20 @@
       .tech-grid .tech-card { flex: 0 0 85vw; }
     }
 
+    /* Tech section — carousel layout (cards mesmo tamanho do Oversized) */
+    .tech-section .products-viewport { padding: 0 40px; }
+    .tech-section .products-footer   { padding: 24px 40px 0; }
+    .tech-section .tech-card         { flex: 0 0 calc(25% - 12px); }
+
+    @media (max-width: 900px) {
+      .tech-section .products-viewport { padding: 0 16px; }
+      .tech-section .products-footer   { padding: 20px 16px 0; }
+      .tech-section .tech-card         { flex: 0 0 75vw; }
+    }
+    @media (max-width: 480px) {
+      .tech-section .tech-card { flex: 0 0 85vw; }
+    }
+
     /* ─── PRODUTOS ─── */
     .products-section {
       background: #ebebeb;
@@ -1248,15 +1262,16 @@
 
     @media (max-width: 900px) { .nav-wa { display: none; } }
 
-    /* WhatsApp drawer item */
-    .drawer-wa {
+    /* WhatsApp drawer item — especificidade alta para sobrescrever .drawer-nav li a */
+    .drawer-nav li a.drawer-wa,
+    .drawer-nav li a.drawer-wa:hover {
       display: flex;
       align-items: center;
       gap: 12px;
       padding: 18px 20px;
       background: #fff;
       color: #000;
-      text-decoration: none;
+      padding-left: 20px;
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
       font-size: 16px;
@@ -1265,8 +1280,8 @@
       transition: opacity 0.15s;
     }
 
-    .drawer-wa:hover { opacity: 0.85; }
-    .drawer-wa svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .drawer-nav li a.drawer-wa:hover { opacity: 0.88; }
+    .drawer-nav li a.drawer-wa svg { width: 20px; height: 20px; flex-shrink: 0; }
 
     /* ─── COLLECTIONS ─── */
     .collections {
@@ -1396,8 +1411,10 @@
         </button>
         <!-- WhatsApp CTA -->
         <a href="https://wa.me/SEUNUMERO" class="nav-wa" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Falar no WhatsApp
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.127 1.528 5.862L0 24l6.294-1.499A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.932 9.932 0 0 1-5.13-1.425l-.37-.22-3.724.977.994-3.633-.243-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm5.47-7.538c-.3-.15-1.775-.877-2.05-.977-.274-.1-.474-.15-.673.15-.2.3-.774.977-.948 1.177-.175.2-.35.225-.65.075-.3-.15-1.267-.468-2.413-1.49-.892-.797-1.494-1.781-1.67-2.08-.176-.3-.019-.463.131-.612.135-.135.3-.351.45-.526.15-.176.2-.301.3-.501.1-.2.05-.376-.025-.526-.075-.15-.673-1.627-.924-2.228-.244-.585-.492-.506-.673-.515l-.576-.01c-.2 0-.526.075-.8.376-.276.3-1.052 1.027-1.052 2.504 0 1.477 1.077 2.904 1.226 3.105.15.2 2.12 3.234 5.13 4.535.717.31 1.275.494 1.712.632.719.229 1.373.197 1.89.12.576-.086 1.775-.726 2.025-1.427.25-.7.25-1.3.175-1.427-.075-.126-.276-.2-.576-.351z"/>
+          </svg>
+          Pedir no WhatsApp
         </a>
       </div>
 
@@ -1429,8 +1446,10 @@
       <li><a href="#">Outlet</a></li>
       <li>
         <a href="https://wa.me/SEUNUMERO" class="drawer-wa" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Falar no WhatsApp
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.127 1.528 5.862L0 24l6.294-1.499A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.932 9.932 0 0 1-5.13-1.425l-.37-.22-3.724.977.994-3.633-.243-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm5.47-7.538c-.3-.15-1.775-.877-2.05-.977-.274-.1-.474-.15-.673.15-.2.3-.774.977-.948 1.177-.175.2-.35.225-.65.075-.3-.15-1.267-.468-2.413-1.49-.892-.797-1.494-1.781-1.67-2.08-.176-.3-.019-.463.131-.612.135-.135.3-.351.45-.526.15-.176.2-.301.3-.501.1-.2.05-.376-.025-.526-.075-.15-.673-1.627-.924-2.228-.244-.585-.492-.506-.673-.515l-.576-.01c-.2 0-.526.075-.8.376-.276.3-1.052 1.027-1.052 2.504 0 1.477 1.077 2.904 1.226 3.105.15.2 2.12 3.234 5.13 4.535.717.31 1.275.494 1.712.632.719.229 1.373.197 1.89.12.576-.086 1.775-.726 2.025-1.427.25-.7.25-1.3.175-1.427-.075-.126-.276-.2-.576-.351z"/>
+          </svg>
+          Pedir no WhatsApp
         </a>
       </li>
     </ul>
@@ -1652,107 +1671,198 @@
   </section>
 
   <!-- ══════════════════════════════════════
-       DESIGN FUNCIONAL — tabs Tech Modal / Poliamida
+       DESIGN FUNCIONAL
   ══════════════════════════════════════ -->
   <section class="tech-section">
 
     <div class="tech-header">
-      <h2 class="tech-title">Design funcional. Performance real.</h2>
-      <p class="tech-subtitle">Toda peça é criada para suportar intensidade, movimento e rotina. Tecidos tech, design clean e funcionalidade do treino ao dia a dia.</p>
+      <h2 class="tech-title">Feita pra quem não para.</h2>
+      <p class="tech-subtitle">Desenvolvida com tecnologia modal de alta performance, leve, macio e com caimento que acompanha cada movimento. Do treino à rua, sem parar.</p>
+    </div>
 
-      <div class="tech-tabs">
-        <button class="tech-tab active" data-tab="modal">Tech Modal</button>
-        <button class="tech-tab" data-tab="poliamida">Poliamida Tech</button>
+    <div class="products-viewport" id="techViewport">
+      <div class="products-track" id="techTrack">
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Preta" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Tech Modal - Preta</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Azul Marinho" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Tech Modal - Azul Marinho</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Chumbo" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Tech Modal - Chumbo</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Branca" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Tech Modal - Branca</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Verde" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Tech Modal - Verde</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Vinho" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Tech Modal - Vinho</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- Tech Modal products -->
-    <div class="tech-grid" id="tab-modal">
-      <div class="tech-card">
-        <div class="tech-badge">-67%</div>
-        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Preta" /></div>
-        <div class="tech-info">
-          <p class="tech-name">Camiseta - Tech Modal - Preta</p>
-          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
-          <p class="tech-installment">Até 12x de R$ 5,40</p>
-          <span class="tech-cashback">Ganhe 10% de cashback</span>
+    <div class="products-footer">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="techFill"></div>
         </div>
       </div>
-      <div class="tech-card">
-        <div class="tech-badge">-67%</div>
-        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Azul" /></div>
-        <div class="tech-info">
-          <p class="tech-name">Camiseta - Tech Modal - Azul Marinho</p>
-          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
-          <p class="tech-installment">Até 12x de R$ 5,40</p>
-          <span class="tech-cashback">Ganhe 10% de cashback</span>
-        </div>
-      </div>
-      <div class="tech-card">
-        <div class="tech-badge">-67%</div>
-        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Chumbo" /></div>
-        <div class="tech-info">
-          <p class="tech-name">Camiseta - Tech Modal - Chumbo</p>
-          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
-          <p class="tech-installment">Até 12x de R$ 5,40</p>
-          <span class="tech-cashback">Ganhe 10% de cashback</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Poliamida Tech products -->
-    <div class="tech-grid hidden" id="tab-poliamida">
-      <div class="tech-card">
-        <div class="tech-badge">-67%</div>
-        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Poliamida Preta" /></div>
-        <div class="tech-info">
-          <p class="tech-name">Camiseta - Poliamida Tech - Preta</p>
-          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
-          <p class="tech-installment">Até 12x de R$ 5,40</p>
-          <span class="tech-cashback">Ganhe 10% de cashback</span>
-        </div>
-      </div>
-      <div class="tech-card">
-        <div class="tech-badge">-67%</div>
-        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Poliamida Cinza" /></div>
-        <div class="tech-info">
-          <p class="tech-name">Camiseta - Poliamida Tech - Cinza</p>
-          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
-          <p class="tech-installment">Até 12x de R$ 5,40</p>
-          <span class="tech-cashback">Ganhe 10% de cashback</span>
-        </div>
-      </div>
-      <div class="tech-card">
-        <div class="tech-badge">-67%</div>
-        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Poliamida Navy" /></div>
-        <div class="tech-info">
-          <p class="tech-name">Camiseta - Poliamida Tech - Navy</p>
-          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
-          <p class="tech-installment">Até 12x de R$ 5,40</p>
-          <span class="tech-cashback">Ganhe 10% de cashback</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Flechas mobile tech -->
-    <div class="tech-mobile-nav" id="tech-nav-modal">
-      <div class="tech-progress-bg"><div class="tech-progress-fill" id="tech-fill-modal"></div></div>
       <div class="products-arrows">
-        <button class="arrow-btn" id="tech-prev-modal" aria-label="Anterior">
+        <button class="arrow-btn" id="techPrev" aria-label="Anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
-        <button class="arrow-btn" id="tech-next-modal" aria-label="Próximo">
+        <button class="arrow-btn" id="techNext" aria-label="Próximo">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
       </div>
     </div>
-    <div class="tech-mobile-nav hidden" id="tech-nav-poliamida">
-      <div class="tech-progress-bg"><div class="tech-progress-fill" id="tech-fill-poliamida"></div></div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       POLIAMIDA TECH
+  ══════════════════════════════════════ -->
+  <section class="tech-section" style="background:#ebebeb;">
+
+    <div class="tech-header">
+      <h2 class="tech-title">Movimento sem limites.</h2>
+      <p class="tech-subtitle">A linha Poliamida Tech foi criada para acompanhar cada agachamento, cada sprint, cada PR. Leve, resistente e com identidade que vai do treino às ruas.</p>
+    </div>
+
+    <div class="products-viewport" id="poliamidaViewport">
+      <div class="products-track" id="poliamidaTrack">
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="polimida1.webp" alt="Poliamida Tech Preta" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Poliamida Tech - Preta</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="polimida1.webp" alt="Poliamida Tech Azul Marinho" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Poliamida Tech - Azul Marinho</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="polimida1.webp" alt="Poliamida Tech Chumbo" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Poliamida Tech - Chumbo</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="polimida1.webp" alt="Poliamida Tech Branca" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Poliamida Tech - Branca</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="polimida1.webp" alt="Poliamida Tech Verde" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Poliamida Tech - Verde</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-badge">-67%</div>
+          <div class="tech-img"><img src="polimida1.webp" alt="Poliamida Tech Vinho" /></div>
+          <div class="tech-info">
+            <p class="tech-name">Camiseta - Poliamida Tech - Vinho</p>
+            <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+            <p class="tech-installment">Até 12x de R$ 5,40</p>
+            <span class="tech-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="products-footer">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="poliamidaFill"></div>
+        </div>
+      </div>
       <div class="products-arrows">
-        <button class="arrow-btn" id="tech-prev-poliamida" aria-label="Anterior">
+        <button class="arrow-btn" id="poliamidaPrev" aria-label="Anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
-        <button class="arrow-btn" id="tech-next-poliamida" aria-label="Próximo">
+        <button class="arrow-btn" id="poliamidaNext" aria-label="Próximo">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
       </div>
@@ -1817,9 +1927,9 @@
   <!-- ══════════════════════════════════════
        WHATSAPP FLOATING BUTTON
   ══════════════════════════════════════ -->
-  <a href="https://wa.me/SEUNUMERO" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <a href="https://wa.me/SEUNUMERO" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Pedir no WhatsApp">
     <svg viewBox="0 0 24 24" fill="#fff">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.127 1.528 5.862L0 24l6.294-1.499A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.932 9.932 0 0 1-5.13-1.425l-.37-.22-3.724.977.994-3.633-.243-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm5.47-7.538c-.3-.15-1.775-.877-2.05-.977-.274-.1-.474-.15-.673.15-.2.3-.774.977-.948 1.177-.175.2-.35.225-.65.075-.3-.15-1.267-.468-2.413-1.49-.892-.797-1.494-1.781-1.67-2.08-.176-.3-.019-.463.131-.612.135-.135.3-.351.45-.526.15-.176.2-.301.3-.501.1-.2.05-.376-.025-.526-.075-.15-.673-1.627-.924-2.228-.244-.585-.492-.506-.673-.515l-.576-.01c-.2 0-.526.075-.8.376-.276.3-1.052 1.027-1.052 2.504 0 1.477 1.077 2.904 1.226 3.105.15.2 2.12 3.234 5.13 4.535.717.31 1.275.494 1.712.632.719.229 1.373.197 1.89.12.576-.086 1.775-.726 2.025-1.427.25-.7.25-1.3.175-1.427-.075-.126-.276-.2-.576-.351z"/>
     </svg>
   </a>
 
@@ -1843,104 +1953,108 @@
       document.body.style.overflow = '';
     }
 
-    // ── Tech carrossel mobile + tabs ──
+    // ── Tech section carousel ──
     (function () {
-      const initialized = {};
+      const viewport = document.getElementById('techViewport');
+      const track    = document.getElementById('techTrack');
+      const fill     = document.getElementById('techFill');
+      const btnPrev  = document.getElementById('techPrev');
+      const btnNext  = document.getElementById('techNext');
+      if (!track) return;
 
-      function buildCarousel(grid) {
-        if (!grid || initialized[grid.id] || window.innerWidth > 900) return;
-        initialized[grid.id] = true;
+      const cards = Array.from(track.children);
+      const total = cards.length;
+      let step = 0, startX = 0, lastX = 0, dragging = false;
 
-        const tabKey    = grid.id.replace('tab-', '');
-        const btnPrev   = document.getElementById('tech-prev-' + tabKey);
-        const btnNext   = document.getElementById('tech-next-' + tabKey);
-        const fillEl    = document.getElementById('tech-fill-' + tabKey);
+      function visibleCount() { return window.innerWidth <= 900 ? 1 : 4; }
+      function cardW()        { return cards[0].offsetWidth + 16; }
+      function maxStep()      { return total - visibleCount(); }
 
-        const origCards = Array.from(grid.children);
-        const N = origCards.length;
-        const COPIES = 3;
-
-        const track = document.createElement('div');
-        track.style.cssText = 'display:flex; will-change:transform;';
-        grid.innerHTML = '';
-        grid.appendChild(track);
-
-        for (let c = 0; c < COPIES * 2 + 1; c++) {
-          origCards.forEach(card => track.appendChild(card.cloneNode(true)));
-        }
-
-        let idx = COPIES * N;
-        let startX = 0, lastX = 0, dragging = false;
-
-        function cardW() { return track.children[0].offsetWidth + 12; }
-
-        function updateNav() {
-          if (!fillEl) return;
-          const real = ((idx - COPIES * N) % N + N) % N;
-          fillEl.style.width = ((real / (N - 1)) * 100) + '%';
-        }
-
-        function moveTo(i, anim) {
-          track.style.transition = anim
-            ? 'transform 0.65s cubic-bezier(0.25, 1, 0.5, 1)'
-            : 'none';
-          track.style.transform = `translateX(${-i * cardW()}px)`;
-          idx = i;
-          updateNav();
-        }
-
-        track.addEventListener('transitionend', () => {
-          const real = ((idx - COPIES * N) % N + N) % N;
-          if (idx < N || idx >= COPIES * 2 * N) moveTo(COPIES * N + real, false);
-        });
-
-        if (btnPrev) btnPrev.addEventListener('click', () => moveTo(idx - 1, true));
-        if (btnNext) btnNext.addEventListener('click', () => moveTo(idx + 1, true));
-
-        grid.addEventListener('touchstart', e => {
-          dragging = true;
-          startX = lastX = e.touches[0].clientX;
-          track.style.transition = 'none';
-        }, { passive: true });
-
-        grid.addEventListener('touchmove', e => {
-          if (!dragging) return;
-          lastX = e.touches[0].clientX;
-          const diff = lastX - startX;
-          if (Math.abs(diff) > 8) e.preventDefault();
-          track.style.transform = `translateX(${-idx * cardW() + diff}px)`;
-        }, { passive: false });
-
-        grid.addEventListener('touchend', () => {
-          if (!dragging) return;
-          dragging = false;
-          const diff = lastX - startX;
-          if      (diff < -50) moveTo(idx + 1, true);
-          else if (diff >  50) moveTo(idx - 1, true);
-          else                 moveTo(idx, true);
-        });
-
-        moveTo(idx, false);
+      function updateUI() {
+        track.style.transform = `translateX(${-step * cardW()}px)`;
+        const pct = maxStep() > 0 ? (step / maxStep()) * 100 : 0;
+        fill.style.width = pct + '%';
+        btnPrev.disabled = step === 0;
+        btnNext.disabled = step >= maxStep();
       }
 
-      // Inicializa tab ativa ao carregar
-      buildCarousel(document.getElementById('tab-modal'));
+      btnNext.addEventListener('click', () => { if (step < maxStep()) { step++; updateUI(); } });
+      btnPrev.addEventListener('click', () => { if (step > 0) { step--; updateUI(); } });
 
-      // Tabs
-      document.querySelectorAll('.tech-tab').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.tech-tab').forEach(b => b.classList.remove('active'));
-          document.querySelectorAll('.tech-grid').forEach(g => g.classList.add('hidden'));
-          document.querySelectorAll('.tech-mobile-nav').forEach(n => n.classList.add('hidden'));
-          btn.classList.add('active');
-          const key  = btn.dataset.tab;
-          const grid = document.getElementById('tab-' + key);
-          const nav  = document.getElementById('tech-nav-' + key);
-          grid.classList.remove('hidden');
-          if (nav) nav.classList.remove('hidden');
-          buildCarousel(grid);
-        });
+      viewport.addEventListener('touchstart', e => {
+        dragging = true; startX = lastX = e.touches[0].clientX;
+        track.style.transition = 'none';
+      }, { passive: true });
+      viewport.addEventListener('touchmove', e => {
+        if (!dragging) return;
+        lastX = e.touches[0].clientX;
+        const diff = lastX - startX;
+        if (Math.abs(diff) > 8) e.preventDefault();
+        track.style.transform = `translateX(${-step * cardW() + diff}px)`;
+      }, { passive: false });
+      viewport.addEventListener('touchend', () => {
+        if (!dragging) return; dragging = false;
+        track.style.transition = 'transform 0.55s cubic-bezier(0.25, 1, 0.5, 1)';
+        const diff = lastX - startX;
+        if (diff < -50 && step < maxStep()) step++;
+        else if (diff > 50 && step > 0)     step--;
+        updateUI();
       });
+
+      window.addEventListener('resize', updateUI);
+      updateUI();
+    })();
+
+    // ── Poliamida section carousel ──
+    (function () {
+      const viewport = document.getElementById('poliamidaViewport');
+      const track    = document.getElementById('poliamidaTrack');
+      const fill     = document.getElementById('poliamidaFill');
+      const btnPrev  = document.getElementById('poliamidaPrev');
+      const btnNext  = document.getElementById('poliamidaNext');
+      if (!track) return;
+
+      const cards = Array.from(track.children);
+      const total = cards.length;
+      let step = 0, startX = 0, lastX = 0, dragging = false;
+
+      function visibleCount() { return window.innerWidth <= 900 ? 1 : 4; }
+      function cardW()        { return cards[0].offsetWidth + 16; }
+      function maxStep()      { return total - visibleCount(); }
+
+      function updateUI() {
+        track.style.transform = `translateX(${-step * cardW()}px)`;
+        const pct = maxStep() > 0 ? (step / maxStep()) * 100 : 0;
+        fill.style.width = pct + '%';
+        btnPrev.disabled = step === 0;
+        btnNext.disabled = step >= maxStep();
+      }
+
+      btnNext.addEventListener('click', () => { if (step < maxStep()) { step++; updateUI(); } });
+      btnPrev.addEventListener('click', () => { if (step > 0) { step--; updateUI(); } });
+
+      viewport.addEventListener('touchstart', e => {
+        dragging = true; startX = lastX = e.touches[0].clientX;
+        track.style.transition = 'none';
+      }, { passive: true });
+      viewport.addEventListener('touchmove', e => {
+        if (!dragging) return;
+        lastX = e.touches[0].clientX;
+        const diff = lastX - startX;
+        if (Math.abs(diff) > 8) e.preventDefault();
+        track.style.transform = `translateX(${-step * cardW() + diff}px)`;
+      }, { passive: false });
+      viewport.addEventListener('touchend', () => {
+        if (!dragging) return; dragging = false;
+        track.style.transition = 'transform 0.55s cubic-bezier(0.25, 1, 0.5, 1)';
+        const diff = lastX - startX;
+        if (diff < -50 && step < maxStep()) step++;
+        else if (diff > 50 && step > 0)     step--;
+        updateUI();
+      });
+
+      window.addEventListener('resize', updateUI);
+      updateUI();
     })();
 
     // ── Produtos carousel ──
