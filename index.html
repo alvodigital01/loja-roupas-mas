@@ -922,21 +922,24 @@
       const track    = document.getElementById('carouselTrack');
       if (!track || !carousel) return;
 
-      const slides = Array.from(track.children);
-      const N = slides.length;
+      const origSlides = Array.from(track.children);
+      const N = origSlides.length;
+      const COPIES = 4; // cópias de cada lado — nunca fica branco
 
-      // [clone-último, slide0, slide1, slide2, clone-primeiro]
-      track.insertBefore(slides[N - 1].cloneNode(true), slides[0]);
-      track.appendChild(slides[0].cloneNode(true));
+      // Esvazia o track e reconstrói com múltiplas cópias
+      track.innerHTML = '';
+      for (let c = 0; c < COPIES * 2 + 1; c++) {
+        origSlides.forEach(s => track.appendChild(s.cloneNode(true)));
+      }
 
-      let idx      = 1; // começa no slide real 0
+      // Começa no centro (cópias do meio)
+      let idx      = COPIES * N;
       let autoTimer;
       let startX   = 0;
       let lastX    = 0;
       let dragging = false;
 
       function slideW() {
-        // largura do slide + gap (margin-right: 12px)
         return track.children[0].offsetWidth + 12;
       }
 
@@ -950,9 +953,12 @@
 
       moveTo(idx, false);
 
+      // Após cada transição, se afastou demais do centro, reposiciona
       track.addEventListener('transitionend', () => {
-        if (idx === 0)     moveTo(N,     false);
-        if (idx === N + 1) moveTo(1,     false);
+        const center = COPIES * N + (idx % N);
+        if (idx < N || idx >= (COPIES * 2) * N) {
+          moveTo(COPIES * N + ((idx % N) + N) % N, false);
+        }
       });
 
       function go(dir) { moveTo(idx + dir, true); }
@@ -962,7 +968,6 @@
         autoTimer = setInterval(() => go(1), 3500);
       }
 
-      // ── Touch drag — escuta no container para capturar eventos ──
       carousel.addEventListener('touchstart', e => {
         dragging = true;
         startX = lastX = e.touches[0].clientX;
@@ -974,7 +979,6 @@
         if (!dragging) return;
         lastX = e.touches[0].clientX;
         const diff = lastX - startX;
-        // Previne scroll vertical apenas quando arrasta horizontalmente
         if (Math.abs(diff) > 8) e.preventDefault();
         track.style.transform = `translateX(${-idx * slideW() + diff}px)`;
       }, { passive: false });
