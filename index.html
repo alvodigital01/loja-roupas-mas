@@ -590,15 +590,26 @@
       .nav-links { display: none; }
       .logo { display: none; }
       .hamburger { display: flex; }
-      .logo-mobile { display: flex; }
+      .logo-mobile {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
 
       .nav-inner {
         padding: 0 12px;
         height: var(--nav-height-mobile);
+        position: relative;
       }
 
       .hero {
-        min-height: calc(100vh - var(--announcement-height) - var(--nav-height-mobile));
+        min-height: 60vh;
+      }
+
+      .hero-content {
+        padding: 36px 20px;
+        gap: 14px;
       }
     }
 
