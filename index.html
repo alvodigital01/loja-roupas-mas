@@ -918,36 +918,41 @@
 
     // ── Carousel infinito com drag ──
     (function () {
-      const track = document.getElementById('carouselTrack');
-      if (!track) return;
+      const carousel = document.getElementById('colCarousel');
+      const track    = document.getElementById('carouselTrack');
+      if (!track || !carousel) return;
 
-      const slides = Array.from(track.children); // 3 slides originais
+      const slides = Array.from(track.children);
       const N = slides.length;
 
-      // Estrutura: [clone-último] [slide0] [slide1] [slide2] [clone-primeiro]
+      // [clone-último, slide0, slide1, slide2, clone-primeiro]
       track.insertBefore(slides[N - 1].cloneNode(true), slides[0]);
       track.appendChild(slides[0].cloneNode(true));
 
-      // Agora track.children tem N+2 itens, índice 1 = primeiro slide real
-      let idx = 1;
+      let idx      = 1; // começa no slide real 0
       let autoTimer;
-      let startX = 0, lastX = 0, dragging = false;
+      let startX   = 0;
+      let lastX    = 0;
+      let dragging = false;
 
       function slideW() {
-        return track.children[0].offsetWidth;
+        // largura do slide + gap (margin-right: 12px)
+        return track.children[0].offsetWidth + 12;
       }
 
       function moveTo(i, anim) {
-        track.style.transition = anim ? 'transform 0.75s cubic-bezier(0.25,1,0.5,1)' : 'none';
-        track.style.transform  = `translateX(${-i * slideW()}px)`;
+        track.style.transition = anim
+          ? 'transform 0.65s cubic-bezier(0.25, 1, 0.5, 1)'
+          : 'none';
+        track.style.transform = `translateX(${-i * slideW()}px)`;
         idx = i;
       }
 
       moveTo(idx, false);
 
       track.addEventListener('transitionend', () => {
-        if (idx === 0)     moveTo(N,     false); // era clone do último → vai pro real
-        if (idx === N + 1) moveTo(1,     false); // era clone do primeiro → vai pro real
+        if (idx === 0)     moveTo(N,     false);
+        if (idx === N + 1) moveTo(1,     false);
       });
 
       function go(dir) { moveTo(idx + dir, true); }
@@ -957,21 +962,24 @@
         autoTimer = setInterval(() => go(1), 3500);
       }
 
-      // Touch
-      track.addEventListener('touchstart', e => {
+      // ── Touch drag — escuta no container para capturar eventos ──
+      carousel.addEventListener('touchstart', e => {
         dragging = true;
         startX = lastX = e.touches[0].clientX;
         clearInterval(autoTimer);
         track.style.transition = 'none';
       }, { passive: true });
 
-      track.addEventListener('touchmove', e => {
+      carousel.addEventListener('touchmove', e => {
         if (!dragging) return;
         lastX = e.touches[0].clientX;
-        track.style.transform = `translateX(${-idx * slideW() + (lastX - startX)}px)`;
-      }, { passive: true });
+        const diff = lastX - startX;
+        // Previne scroll vertical apenas quando arrasta horizontalmente
+        if (Math.abs(diff) > 8) e.preventDefault();
+        track.style.transform = `translateX(${-idx * slideW() + diff}px)`;
+      }, { passive: false });
 
-      track.addEventListener('touchend', () => {
+      carousel.addEventListener('touchend', () => {
         if (!dragging) return;
         dragging = false;
         const diff = lastX - startX;
