@@ -347,7 +347,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.72);
+      background: rgba(0,0,0,0.82);
       pointer-events: none;
     }
 
@@ -398,6 +398,34 @@
       text-align: center;
       animation: fadeUp 0.9s 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
       min-width: 260px;
+      cursor: pointer;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  background 0.35s ease,
+                  border-color 0.35s ease,
+                  box-shadow 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+      pointer-events: none;
+    }
+
+    .price-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.35);
+      box-shadow: 0 0 30px rgba(255,255,255,0.08), 0 16px 40px rgba(0,0,0,0.4);
+    }
+
+    .price-card:hover::before {
+      transform: translateX(200%);
     }
 
     .price-label {
@@ -417,7 +445,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      gap: 2px;
+      gap: 8px;
       line-height: 1;
     }
 
@@ -425,13 +453,15 @@
       font-size: 56px;
       font-weight: 900;
       margin-bottom: 6px;
+      padding-right: 10px;
     }
 
     .price-main {
       font-size: 76px;
       font-weight: 900;
-      letter-spacing: -0.02em;
+      letter-spacing: 0.02em;
       line-height: 1;
+      padding-right: 2px;
     }
 
     .price-cents {
@@ -481,6 +511,37 @@
       font-size: 13px;
       color: #ccc;
       animation: fadeUp 0.9s 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                  background 0.3s ease,
+                  border-color 0.3s ease,
+                  box-shadow 0.3s ease,
+                  color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cashback-badge::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,0.1) 50%, transparent 65%);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+      pointer-events: none;
+      border-radius: 100px;
+    }
+
+    .cashback-badge:hover {
+      transform: translateY(-3px) scale(1.04);
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.3);
+      box-shadow: 0 0 20px rgba(255,255,255,0.07), 0 10px 30px rgba(0,0,0,0.35);
+      color: #fff;
+    }
+
+    .cashback-badge:hover::before {
+      transform: translateX(200%);
     }
 
     .cashback-badge strong {
