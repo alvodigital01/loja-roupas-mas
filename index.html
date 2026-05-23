@@ -1283,6 +1283,197 @@
     .drawer-nav li a.drawer-wa:hover { opacity: 0.88; }
     .drawer-nav li a.drawer-wa svg { width: 20px; height: 20px; flex-shrink: 0; }
 
+    /* ─── PRODUCT MODAL ─── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.52);
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal-container {
+      background: #fff;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 1060px;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      transform: translateY(24px) scale(0.98);
+      transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
+      margin: auto;
+    }
+    .modal-overlay.open .modal-container { transform: translateY(0) scale(1); }
+
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      width: 34px; height: 34px;
+      background: rgba(255,255,255,0.92);
+      border: none; border-radius: 50%;
+      cursor: pointer; z-index: 20;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: #f0f0f0; }
+    .modal-close svg { width: 16px; height: 16px; stroke: #111; fill: none; stroke-width: 2.2; stroke-linecap: round; }
+
+    .modal-gallery {
+      background: #ebebeb;
+      display: flex;
+      gap: 10px;
+      padding: 18px;
+      min-height: 520px;
+    }
+    .modal-thumbs { display: flex; flex-direction: column; gap: 8px; }
+    .modal-thumb {
+      width: 54px; height: 54px;
+      border-radius: 6px; border: 2px solid transparent;
+      overflow: hidden; cursor: pointer; background: #ddd;
+      transition: border-color 0.2s; flex-shrink: 0;
+    }
+    .modal-thumb.active { border-color: #111; }
+    .modal-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-main-img {
+      flex: 1; position: relative;
+      border-radius: 8px; overflow: hidden;
+      background: #e0e0e0;
+      display: flex; align-items: center;
+    }
+    .modal-main-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .modal-expand-btn {
+      position: absolute; top: 10px; right: 10px;
+      width: 32px; height: 32px;
+      background: rgba(255,255,255,0.88); border: none;
+      border-radius: 6px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-expand-btn svg { width: 15px; height: 15px; stroke: #333; fill: none; stroke-width: 2; stroke-linecap: round; }
+
+    .modal-info {
+      padding: 28px 32px 32px;
+      overflow-y: auto;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .modal-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 26px;
+      color: #111; margin-bottom: 10px; line-height: 1.1;
+    }
+    .modal-meta {
+      display: flex; align-items: center; gap: 14px;
+      font-family: 'Barlow', sans-serif; font-size: 13px; color: #555;
+      margin-bottom: 14px;
+    }
+    .modal-stars { color: #111; font-size: 13px; letter-spacing: 1px; }
+    .modal-stars b { color: #333; }
+    .modal-live { display: flex; align-items: center; gap: 5px; }
+    .modal-live-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; }
+    .modal-price-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .modal-price-old { font-family: 'Barlow', sans-serif; font-size: 14px; color: #aaa; text-decoration: line-through; }
+    .modal-off-badge {
+      background: #111; color: #fff;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px;
+      padding: 3px 8px; border-radius: 4px; letter-spacing: 0.03em;
+    }
+    .modal-price-main {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: 40px; color: #111; line-height: 1; margin-bottom: 4px;
+    }
+    .modal-installments { font-family: 'Barlow', sans-serif; font-size: 13px; color: #555; margin-bottom: 12px; }
+    .modal-cashback-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #c8f0d0; color: #1a6b35;
+      font-family: 'Barlow', sans-serif; font-size: 13px; font-weight: 600;
+      padding: 7px 14px; border-radius: 100px; margin-bottom: 18px;
+    }
+    .modal-size-row { margin-bottom: 18px; }
+    .modal-size-label { font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 600; color: #111; margin-bottom: 10px; }
+    .modal-size-label span { font-weight: 400; color: #666; }
+    .modal-sizes { display: flex; gap: 8px; flex-wrap: wrap; }
+    .modal-size-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1.5px solid #ccc; background: #fff;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px; color: #111;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+    .modal-size-btn.active, .modal-size-btn:hover { background: #111; color: #fff; border-color: #111; }
+    .modal-table-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'Barlow', sans-serif; font-size: 13px; color: #555;
+      text-decoration: none; margin-bottom: 18px;
+    }
+    .modal-table-link svg { width: 14px; height: 14px; stroke: #777; fill: none; stroke-width: 1.8; }
+    .modal-wa-btn {
+      width: 100%; background: #111; color: #fff; border: none;
+      border-radius: 8px; padding: 15px 20px;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      gap: 10px; text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s; margin-bottom: 10px;
+    }
+    .modal-wa-btn:hover { opacity: 0.87; transform: translateY(-1px); }
+    .modal-wa-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .modal-shipping { font-family: 'Barlow', sans-serif; font-size: 13px; color: #555; text-align: center; margin-bottom: 20px; }
+    .modal-features {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px 8px; padding: 18px 0;
+      border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin-bottom: 0;
+    }
+    .modal-feature { display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center; }
+    .modal-feature svg { width: 22px; height: 22px; stroke: #111; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .modal-feature-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 9.5px; color: #111; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.3; }
+    .modal-accordion-item { border-top: 1px solid #eee; }
+    .modal-accordion-btn {
+      width: 100%; background: none; border: none;
+      padding: 16px 0; display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 15px; color: #111;
+    }
+    .modal-accordion-btn svg { width: 20px; height: 20px; stroke: #111; fill: none; stroke-width: 2; flex-shrink: 0; transition: transform 0.28s; }
+    .modal-accordion-item.open .modal-accordion-btn svg { transform: rotate(45deg); }
+    .modal-accordion-body { font-family: 'Barlow', sans-serif; font-size: 13.5px; color: #444; line-height: 1.75; padding: 0 0 16px; display: none; }
+    .modal-accordion-body p { margin-bottom: 6px; }
+    .modal-accordion-item.open .modal-accordion-body { display: block; }
+    .modal-info-sec { padding-top: 18px; border-top: 1px solid #eee; }
+    .modal-info-sec-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: #888; margin-bottom: 14px; }
+    .modal-info-items { display: flex; flex-direction: column; gap: 14px; }
+    .modal-info-item { display: flex; gap: 12px; align-items: flex-start; }
+    .modal-info-item svg { width: 20px; height: 20px; stroke: #111; fill: none; stroke-width: 1.6; flex-shrink: 0; margin-top: 2px; }
+    .modal-info-item-text { font-family: 'Barlow', sans-serif; font-size: 14px; color: #111; line-height: 1.4; }
+    .modal-info-item-text a { display: block; color: #777; font-size: 12.5px; text-decoration: underline; text-underline-offset: 2px; }
+
+    @media (max-width: 900px) {
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal-container {
+        grid-template-columns: 1fr; border-radius: 20px 20px 0 0;
+        max-height: 93vh; overflow-y: auto;
+        transform: translateY(100%); margin: 0;
+      }
+      .modal-overlay.open .modal-container { transform: translateY(0); }
+      .modal-gallery { min-height: auto; flex-direction: column-reverse; padding: 14px; gap: 8px; }
+      .modal-thumbs { flex-direction: row; }
+      .modal-thumb { width: 56px; height: 56px; }
+      .modal-main-img { aspect-ratio: 3/4; min-height: auto; }
+      .modal-info { padding: 20px 20px 40px; max-height: none; }
+      .modal-price-main { font-size: 34px; }
+    }
+
     /* ─── COLLECTIONS ─── */
     .collections {
       background: #f2f2f2;
@@ -1392,15 +1583,10 @@
 
       <!-- Desktop nav links -->
       <ul class="nav-links">
-        <li><a href="#">RUX</a></li>
-        <li><a href="#">Hello Kitty</a></li>
-        <li><a href="#">Soldier Mentality</a></li>
-        <li><a href="#">Freaky Season</a></li>
-        <li><a href="#">Oversized</a></li>
-        <li><a href="#">Shorts de Compressão</a></li>
-        <li><a href="#">Tech Modal</a></li>
-        <li><a href="#">Poliamida Tech</a></li>
-        <li><a href="#">Outlet</a></li>
+        <li><a href="#oversized">Oversized</a></li>
+        <li><a href="#tech-modal">Tech Modal</a></li>
+        <li><a href="#poliamida">Poliamida Tech</a></li>
+        <li><a href="#contato">Contato</a></li>
       </ul>
 
       <!-- Right icons -->
@@ -1435,15 +1621,10 @@
     </div>
 
     <ul class="drawer-nav">
-      <li><a href="#">RUX</a></li>
-      <li><a href="#">Hello Kitty</a></li>
-      <li><a href="#">Soldier Mentality</a></li>
-      <li><a href="#">Freaky Season</a></li>
-      <li><a href="#">Oversized</a></li>
-      <li><a href="#">Shorts de Compressão</a></li>
-      <li><a href="#">Tech Modal</a></li>
-      <li><a href="#">Poliamida Tech</a></li>
-      <li><a href="#">Outlet</a></li>
+      <li><a href="#oversized">Oversized</a></li>
+      <li><a href="#tech-modal">Tech Modal</a></li>
+      <li><a href="#poliamida">Poliamida Tech</a></li>
+      <li><a href="#contato">Contato</a></li>
       <li>
         <a href="https://wa.me/SEUNUMERO" class="drawer-wa" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1509,17 +1690,17 @@
 
     <!-- Desktop grid -->
     <div class="collections-grid">
-      <a href="#" class="col-card">
+      <a href="#oversized" class="col-card">
         <div class="col-card__img">
           <img src="oversised.webp" alt="Oversized" />
         </div>
       </a>
-      <a href="#" class="col-card">
+      <a href="#tech-modal" class="col-card">
         <div class="col-card__img">
           <img src="tech.webp" alt="Tech Modal" />
         </div>
       </a>
-      <a href="#" class="col-card">
+      <a href="#poliamida" class="col-card">
         <div class="col-card__img">
           <img src="polimida.webp" alt="Poliamida Tech" />
         </div>
@@ -1529,17 +1710,17 @@
     <!-- Mobile carousel -->
     <div class="col-carousel" id="colCarousel">
       <div class="col-carousel__track" id="carouselTrack">
-        <a href="#" class="col-carousel__item">
+        <a href="#oversized" class="col-carousel__item">
           <div class="col-card__img">
             <img src="oversised.webp" alt="Oversized" />
           </div>
         </a>
-        <a href="#" class="col-carousel__item">
+        <a href="#tech-modal" class="col-carousel__item">
           <div class="col-card__img">
             <img src="tech.webp" alt="Tech Modal" />
           </div>
         </a>
-        <a href="#" class="col-carousel__item">
+        <a href="#poliamida" class="col-carousel__item">
           <div class="col-card__img">
             <img src="polimida.webp" alt="Poliamida Tech" />
           </div>
@@ -1552,7 +1733,7 @@
   <!-- ══════════════════════════════════════
        PRODUTOS — Mais que Oversized
   ══════════════════════════════════════ -->
-  <section class="products-section">
+  <section class="products-section" id="oversized">
 
     <div class="products-header">
       <h2 class="products-title">Mais que Oversized</h2>
@@ -1673,7 +1854,7 @@
   <!-- ══════════════════════════════════════
        DESIGN FUNCIONAL
   ══════════════════════════════════════ -->
-  <section class="tech-section">
+  <section class="tech-section" id="tech-modal">
 
     <div class="tech-header">
       <h2 class="tech-title">Feita pra quem não para.</h2>
@@ -1773,7 +1954,7 @@
   <!-- ══════════════════════════════════════
        POLIAMIDA TECH
   ══════════════════════════════════════ -->
-  <section class="tech-section" style="background:#ebebeb;">
+  <section class="tech-section" id="poliamida" style="background:#ebebeb;">
 
     <div class="tech-header">
       <h2 class="tech-title">Movimento sem limites.</h2>
@@ -1923,6 +2104,142 @@
     </div>
 
   </footer>
+
+  <!-- ══════════════════════════════════════
+       PRODUCT MODAL
+  ══════════════════════════════════════ -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-container">
+
+      <button class="modal-close" id="modalClose" aria-label="Fechar">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <!-- Galeria -->
+      <div class="modal-gallery">
+        <div class="modal-thumbs" id="modalThumbs"></div>
+        <div class="modal-main-img">
+          <img id="modalMainImg" src="" alt="" />
+          <button class="modal-expand-btn" aria-label="Expandir">
+            <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Informações -->
+      <div class="modal-info">
+        <h1 class="modal-title" id="modalTitle"></h1>
+
+        <div class="modal-meta">
+          <div class="modal-stars">★★★★★ <b>4.9/5</b></div>
+          <div class="modal-live"><span class="modal-live-dot"></span><span>115 ao vivo</span></div>
+        </div>
+
+        <div class="modal-price-row">
+          <span class="modal-price-old" id="modalPriceOld"></span>
+          <span class="modal-off-badge" id="modalOffBadge"></span>
+        </div>
+        <div class="modal-price-main" id="modalPriceMain"></div>
+        <div class="modal-installments" id="modalInstallments"></div>
+        <div class="modal-cashback-pill">% 10% de cashback na próxima compra</div>
+
+        <div class="modal-size-row">
+          <p class="modal-size-label">Tamanho: <span id="modalSelectedSize">P</span></p>
+          <div class="modal-sizes">
+            <button class="modal-size-btn active" data-size="P">P</button>
+            <button class="modal-size-btn" data-size="M">M</button>
+            <button class="modal-size-btn" data-size="G">G</button>
+            <button class="modal-size-btn" data-size="GG">GG</button>
+            <button class="modal-size-btn" data-size="XG">XG</button>
+          </div>
+        </div>
+
+        <a href="#" class="modal-table-link">
+          <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Tabela de Medidas
+        </a>
+
+        <a href="https://wa.me/SEUNUMERO" class="modal-wa-btn" id="modalWaBtn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.127 1.528 5.862L0 24l6.294-1.499A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm5.47 16.462c-.3-.15-1.775-.877-2.05-.977-.274-.1-.474-.15-.673.15-.2.3-.774.977-.948 1.177-.175.2-.35.225-.65.075-.3-.15-1.267-.468-2.413-1.49-.892-.797-1.494-1.781-1.67-2.08-.176-.3-.019-.463.131-.612.135-.135.3-.351.45-.526.15-.176.2-.301.3-.501.1-.2.05-.376-.025-.526-.075-.15-.673-1.627-.924-2.228-.244-.585-.492-.506-.673-.515l-.576-.01c-.2 0-.526.075-.8.376-.276.3-1.052 1.027-1.052 2.504 0 1.477 1.077 2.904 1.226 3.105.15.2 2.12 3.234 5.13 4.535.717.31 1.275.494 1.712.632.719.229 1.373.197 1.89.12.576-.086 1.775-.726 2.025-1.427.25-.7.25-1.3.175-1.427-.075-.126-.276-.2-.576-.351z"/></svg>
+          Pedir no WhatsApp
+        </a>
+
+        <p class="modal-shipping">Frete grátis nas compras acima de R$ 299</p>
+
+        <div class="modal-features">
+          <div class="modal-feature">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <span class="modal-feature-label">96%<br>Algodão</span>
+          </div>
+          <div class="modal-feature">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <span class="modal-feature-label">Gramatura<br>190G</span>
+          </div>
+          <div class="modal-feature">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span class="modal-feature-label">Caimento<br>Perfeito</span>
+          </div>
+          <div class="modal-feature">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span class="modal-feature-label">Resistente,<br>Não Encolhe</span>
+          </div>
+          <div class="modal-feature">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <span class="modal-feature-label">Toque<br>Suave</span>
+          </div>
+          <div class="modal-feature">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span class="modal-feature-label">Estilo<br>Único</span>
+          </div>
+        </div>
+
+        <div class="modal-accordion-item">
+          <button class="modal-accordion-btn">Descrição <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="modal-accordion-body">
+            <p>— Conheça a coleção BERZERK!</p>
+            <p>— Reúne alta performance com o casual, perfeito para o treino e para o dia a dia, combinando estilo e versatilidade.</p>
+            <p>— Tecido Tech: 96% algodão 4% elastano, proporcionando caimento perfeito ao corpo.</p>
+            <p>— Gramatura de 190GSM.</p>
+            <p>— Gola 2x1 em Ribana Canelada com elastano, não esgarça com o tempo.</p>
+            <p>— Tingimento reativo (não desbota) e pré encolhido para manter a forma original.</p>
+            <p>— Estampa em Silk Screen no Plastisol para alta durabilidade.</p>
+          </div>
+        </div>
+
+        <div class="modal-accordion-item">
+          <button class="modal-accordion-btn">Detalhes do Produto <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+          <div class="modal-accordion-body">
+            <p><strong>Material:</strong> 96% Algodão e 4% elastano</p>
+            <p><strong>Gramatura:</strong> 190g/m²</p>
+            <p><strong>Modelagem:</strong> Oversized</p>
+          </div>
+        </div>
+
+        <div class="modal-info-sec">
+          <p class="modal-info-sec-title">Informações</p>
+          <div class="modal-info-items">
+            <div class="modal-info-item">
+              <svg viewBox="0 0 24 24"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+              <div class="modal-info-item-text">10% de Cashback na próxima compra.<a href="#">Saiba mais sobre o cashback.</a></div>
+            </div>
+            <div class="modal-info-item">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+              <div class="modal-info-item-text">Melhor custo benefício do Brasil.<a href="#">Entenda o motivo.</a></div>
+            </div>
+            <div class="modal-info-item">
+              <svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.84H5v10a2 2 0 002 2h10a2 2 0 002-2V10h1.15a1 1 0 00.99-.84l.58-3.57a2 2 0 00-1.34-2.23z"/></svg>
+              <div class="modal-info-item-text">Mais cuidado, mais durabilidade.<a href="#">Veja como conservar seu produto.</a></div>
+            </div>
+            <div class="modal-info-item">
+              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+              <div class="modal-info-item-text">A primeira troca é fácil e gratuita.<a href="#">Confira as opções de troca aqui.</a></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- ══════════════════════════════════════
        WHATSAPP FLOATING BUTTON
@@ -2216,6 +2533,95 @@
       });
 
       startAuto();
+    })();
+
+    // ── Product Modal ──
+    (function () {
+      const overlay    = document.getElementById('productModal');
+      const closeBtn   = document.getElementById('modalClose');
+      const mainImg    = document.getElementById('modalMainImg');
+      const thumbsEl   = document.getElementById('modalThumbs');
+      const titleEl    = document.getElementById('modalTitle');
+      const priceOldEl = document.getElementById('modalPriceOld');
+      const offBadgeEl = document.getElementById('modalOffBadge');
+      const priceMainEl= document.getElementById('modalPriceMain');
+      const installEl  = document.getElementById('modalInstallments');
+      const selSizeEl  = document.getElementById('modalSelectedSize');
+      const waBtn      = document.getElementById('modalWaBtn');
+
+      function openModal(data) {
+        titleEl.textContent    = data.name;
+        priceOldEl.textContent = data.priceOld || '';
+        offBadgeEl.textContent = data.off || '';
+        priceMainEl.textContent= data.price;
+        installEl.textContent  = data.installments;
+        mainImg.src = data.img;
+        mainImg.alt = data.name;
+        waBtn.href  = 'https://wa.me/SEUNUMERO?text=' + encodeURIComponent('Olá! Tenho interesse em: ' + data.name);
+
+        thumbsEl.innerHTML = '';
+        [data.img, data.img, data.img].forEach((src, i) => {
+          const t = document.createElement('div');
+          t.className = 'modal-thumb' + (i === 0 ? ' active' : '');
+          t.innerHTML = `<img src="${src}" alt="" />`;
+          t.addEventListener('click', () => {
+            thumbsEl.querySelectorAll('.modal-thumb').forEach(x => x.classList.remove('active'));
+            t.classList.add('active');
+            mainImg.src = src;
+          });
+          thumbsEl.appendChild(t);
+        });
+
+        selSizeEl.textContent = 'P';
+        document.querySelectorAll('.modal-size-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.size === 'P');
+        });
+
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+
+      document.querySelectorAll('.modal-size-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.modal-size-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selSizeEl.textContent = btn.dataset.size;
+        });
+      });
+
+      document.querySelectorAll('.modal-accordion-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.closest('.modal-accordion-item').classList.toggle('open');
+        });
+      });
+
+      function attachCards() {
+        document.querySelectorAll('.tech-card, .prod-card').forEach(card => {
+          if (card.dataset.modalBound) return;
+          card.dataset.modalBound = '1';
+          card.addEventListener('click', () => {
+            const img   = card.querySelector('img');
+            const name  = card.querySelector('.tech-name, .prod-name')?.textContent.trim() || '';
+            const pEl   = card.querySelector('.tech-price, .prod-price');
+            const old   = pEl?.querySelector('s')?.textContent.trim() || '';
+            const price = pEl?.querySelector('strong')?.textContent.trim() || '';
+            const inst  = card.querySelector('.tech-installment, .prod-installment')?.textContent.trim() || '';
+            const badge = card.querySelector('.tech-badge, .prod-badge')?.textContent.trim() || '';
+            openModal({ img: img?.src || '', name, priceOld: old, off: badge ? badge + ' OFF' : '', price, installments: inst });
+          });
+        });
+      }
+
+      attachCards();
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
     })();
   </script>
 </body>
