@@ -968,15 +968,41 @@
       timer = setInterval(() => goTo(current + 1), 3500);
     }
 
-    // Touch swipe
+    // Touch — arrasto em tempo real
+    let dragStartX = 0;
+    let dragOffset = 0;
+    let isDragging = false;
+
+    function baseTranslate() {
+      return -((current + 1) * itemWidth());
+    }
+
     track.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
+      if (isTransitioning) return;
+      dragStartX = e.touches[0].clientX;
+      dragOffset = 0;
+      isDragging = true;
       clearInterval(timer);
+      track.style.transition = 'none';
     }, { passive: true });
 
-    track.addEventListener('touchend', e => {
-      const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    track.addEventListener('touchmove', e => {
+      if (!isDragging) return;
+      dragOffset = e.touches[0].clientX - dragStartX;
+      track.style.transform = `translateX(${baseTranslate() + dragOffset}px)`;
+    }, { passive: true });
+
+    track.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      if (Math.abs(dragOffset) > itemWidth() * 0.25) {
+        goTo(dragOffset < 0 ? current + 1 : current - 1);
+      } else {
+        // Volta para posição original
+        track.style.transition = 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
+        track.style.transform = `translateX(${baseTranslate()}px)`;
+        isTransitioning = false;
+      }
       startTimer();
     });
 
