@@ -621,6 +621,446 @@
       .hero-cta { font-size: 11px; padding: 11px 20px; letter-spacing: 0.1em; }
       .cashback-badge { font-size: 12px; padding: 8px 16px; }
     }
+    /* ─── TECH SECTION ─── */
+    .tech-section {
+      background: #fff;
+      padding: 60px 40px 64px;
+    }
+
+    .tech-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .tech-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 38px;
+      color: #111;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .tech-subtitle {
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      color: #555;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+      max-width: 1100px;
+    }
+
+    .tech-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .tech-tab {
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      background: #fff;
+      color: #111;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .tech-tab.active {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .tech-tab:not(.active):hover {
+      border-color: #999;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      transition: opacity 0.3s ease;
+    }
+
+    .tech-grid.hidden {
+      display: none;
+    }
+
+    .tech-card {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .tech-card:hover .tech-img img {
+      transform: scale(1.04);
+    }
+
+    .tech-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: #111;
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      z-index: 2;
+      letter-spacing: 0.03em;
+    }
+
+    .tech-img {
+      background: #d8dce2;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tech-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.5s ease;
+    }
+
+    .tech-info {
+      padding: 16px 4px 4px;
+      text-align: center;
+    }
+
+    .tech-name {
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 6px;
+    }
+
+    .tech-price {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 4px;
+    }
+
+    .tech-price s {
+      color: #aaa;
+      font-size: 13px;
+      margin-right: 4px;
+    }
+
+    .tech-price strong {
+      color: #111;
+      font-weight: 700;
+    }
+
+    .tech-installment {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .tech-cashback {
+      display: inline-block;
+      background: #c8f0d0;
+      color: #1a6b35;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    .tech-mobile-nav {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .tech-section { padding: 48px 0 52px; }
+      .tech-header { padding: 0 16px; }
+      .tech-title { font-size: 28px; }
+      .tech-subtitle { max-width: 100%; }
+      .products-subtitle { max-width: 100%; }
+
+      .tech-mobile-nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 16px 0;
+      }
+
+      .tech-mobile-nav.hidden { display: none; }
+
+      .tech-progress-bg {
+        flex: 1;
+        height: 2px;
+        background: #ccc;
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .tech-progress-fill {
+        height: 100%;
+        background: #111;
+        border-radius: 2px;
+        width: 0%;
+        transition: width 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+
+      .tech-grid {
+        display: flex;
+        overflow: hidden;
+        gap: 0;
+        touch-action: pan-y;
+      }
+
+      .tech-grid .tech-card {
+        flex: 0 0 80vw;
+        margin-right: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tech-title { font-size: 24px; }
+      .tech-subtitle { font-size: 13px; }
+      .tech-grid .tech-card { flex: 0 0 85vw; }
+    }
+
+    /* ─── PRODUTOS ─── */
+    .products-section {
+      background: #ebebeb;
+      padding: 56px 0 40px;
+    }
+
+    .products-header {
+      text-align: center;
+      padding: 0 24px 36px;
+    }
+
+    .products-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: #111;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .products-subtitle {
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      color: #555;
+      margin: 0 auto;
+      line-height: 1.5;
+      max-width: 1100px;
+    }
+
+    .products-viewport {
+      overflow: hidden;
+      padding: 0 24px;
+    }
+
+    .products-track {
+      display: flex;
+      gap: 16px;
+      transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+
+    .prod-card {
+      flex: 0 0 calc(25% - 12px);
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: box-shadow 0.25s;
+    }
+
+    .prod-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    .prod-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #111;
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 4px 8px;
+      border-radius: 3px;
+      z-index: 2;
+      letter-spacing: 0.04em;
+    }
+
+    .prod-img {
+      background: #f5f5f5;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .prod-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .prod-card:hover .prod-img img {
+      transform: scale(1.05);
+    }
+
+    .prod-info {
+      padding: 14px 16px 18px;
+      text-align: center;
+    }
+
+    .prod-name {
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #111;
+      margin-bottom: 6px;
+    }
+
+    .prod-price {
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 4px;
+    }
+
+    .prod-price s {
+      color: #999;
+      font-size: 13px;
+      margin-right: 4px;
+    }
+
+    .prod-price strong {
+      color: #111;
+      font-weight: 700;
+    }
+
+    .prod-installment {
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .prod-cashback {
+      display: inline-block;
+      background: #c8f0d0;
+      color: #1a6b35;
+      font-family: 'Barlow', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    /* Footer: barra + setas */
+    .products-footer {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 24px 0;
+    }
+
+    .progress-bar-wrap {
+      flex: 1;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 2px;
+      background: #ccc;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: #111;
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .products-arrows {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .arrow-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .arrow-btn:hover {
+      background: #111;
+      border-color: #111;
+    }
+
+    .arrow-btn:hover svg {
+      stroke: #fff;
+    }
+
+    .arrow-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: #111;
+      transition: stroke 0.2s;
+    }
+
+    .arrow-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .arrow-btn:disabled:hover {
+      background: #fff;
+      border-color: #ccc;
+    }
+
+    .arrow-btn:disabled:hover svg { stroke: #111; }
+
+    @media (max-width: 900px) {
+      .prod-card { flex: 0 0 75vw; }
+      .products-viewport { padding: 0 16px; }
+      .products-footer { padding: 20px 16px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .prod-card { flex: 0 0 85vw; }
+      .products-title { font-size: 26px; }
+    }
+
     /* ─── COLLECTIONS ─── */
     .collections {
       background: #f2f2f2;
@@ -888,6 +1328,236 @@
 
   </section>
 
+  <!-- ══════════════════════════════════════
+       PRODUTOS — Mais que Oversized
+  ══════════════════════════════════════ -->
+  <section class="products-section">
+
+    <div class="products-header">
+      <h2 class="products-title">Mais que Oversized</h2>
+      <p class="products-subtitle">Materiais premium, caimento perfeito e a identidade que ajudou a popularizar o Oversized nas academias do Brasil.</p>
+    </div>
+
+    <div class="products-viewport" id="productsViewport">
+      <div class="products-track" id="productsTrack">
+
+        <div class="prod-card">
+          <div class="prod-badge">-60%</div>
+          <div class="prod-img"><img src="EXCLUSIVAVERDE.webp" alt="Oversized - Zeus" /></div>
+          <div class="prod-info">
+            <p class="prod-name">Oversized - Zeus</p>
+            <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
+            <p class="prod-installment">Até 12x de R$ 6,48</p>
+            <span class="prod-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-badge">-60%</div>
+          <div class="prod-img"><img src="EXCLUSIVAVERDE.webp" alt="Oversized - Shura" /></div>
+          <div class="prod-info">
+            <p class="prod-name">Oversized - Shura</p>
+            <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
+            <p class="prod-installment">Até 12x de R$ 6,48</p>
+            <span class="prod-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-badge">-60%</div>
+          <div class="prod-img"><img src="EXCLUSIVAVERDE.webp" alt="Oversized - Yakuza" /></div>
+          <div class="prod-info">
+            <p class="prod-name">Oversized - Yakuza</p>
+            <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
+            <p class="prod-installment">Até 12x de R$ 6,48</p>
+            <span class="prod-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img"><img src="EXCLUSIVAVERDE.webp" alt="Oversized - Chinken Guts" /></div>
+          <div class="prod-info">
+            <p class="prod-name">Oversized - Chinken Guts</p>
+            <p class="prod-price"><strong>R$ 69,90</strong></p>
+            <p class="prod-installment">Até 12x de R$ 7,56</p>
+            <span class="prod-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-badge">-60%</div>
+          <div class="prod-img"><img src="EXCLUSIVAVERDE.webp" alt="Oversized - Leg Day" /></div>
+          <div class="prod-info">
+            <p class="prod-name">Oversized - Leg Day</p>
+            <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
+            <p class="prod-installment">Até 12x de R$ 6,48</p>
+            <span class="prod-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img"><img src="EXCLUSIVAVERDE.webp" alt="Oversized - Tiger" /></div>
+          <div class="prod-info">
+            <p class="prod-name">Oversized - Tiger</p>
+            <p class="prod-price"><strong>R$ 69,90</strong></p>
+            <p class="prod-installment">Até 12x de R$ 7,56</p>
+            <span class="prod-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-badge">-60%</div>
+          <div class="prod-img"><img src="EXCLUSIVAVERDE.webp" alt="Oversized - Warrior" /></div>
+          <div class="prod-info">
+            <p class="prod-name">Oversized - Warrior</p>
+            <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
+            <p class="prod-installment">Até 12x de R$ 6,48</p>
+            <span class="prod-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-badge">-60%</div>
+          <div class="prod-img"><img src="EXCLUSIVAVERDE.webp" alt="Oversized - Viking" /></div>
+          <div class="prod-info">
+            <p class="prod-name">Oversized - Viking</p>
+            <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
+            <p class="prod-installment">Até 12x de R$ 6,48</p>
+            <span class="prod-cashback">Ganhe 10% de cashback</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Barra de progresso + setas -->
+    <div class="products-footer">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+      </div>
+      <div class="products-arrows">
+        <button class="arrow-btn" id="prodPrev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="arrow-btn" id="prodNext" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       DESIGN FUNCIONAL — tabs Tech Modal / Poliamida
+  ══════════════════════════════════════ -->
+  <section class="tech-section">
+
+    <div class="tech-header">
+      <h2 class="tech-title">Design funcional. Performance real.</h2>
+      <p class="tech-subtitle">Toda peça é criada para suportar intensidade, movimento e rotina. Tecidos tech, design clean e funcionalidade do treino ao dia a dia.</p>
+
+      <div class="tech-tabs">
+        <button class="tech-tab active" data-tab="modal">Tech Modal</button>
+        <button class="tech-tab" data-tab="poliamida">Poliamida Tech</button>
+      </div>
+    </div>
+
+    <!-- Tech Modal products -->
+    <div class="tech-grid" id="tab-modal">
+      <div class="tech-card">
+        <div class="tech-badge">-67%</div>
+        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Preta" /></div>
+        <div class="tech-info">
+          <p class="tech-name">Camiseta - Tech Modal - Preta</p>
+          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+          <p class="tech-installment">Até 12x de R$ 5,40</p>
+          <span class="tech-cashback">Ganhe 10% de cashback</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-badge">-67%</div>
+        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Azul" /></div>
+        <div class="tech-info">
+          <p class="tech-name">Camiseta - Tech Modal - Azul Marinho</p>
+          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+          <p class="tech-installment">Até 12x de R$ 5,40</p>
+          <span class="tech-cashback">Ganhe 10% de cashback</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-badge">-67%</div>
+        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Tech Modal Chumbo" /></div>
+        <div class="tech-info">
+          <p class="tech-name">Camiseta - Tech Modal - Chumbo</p>
+          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+          <p class="tech-installment">Até 12x de R$ 5,40</p>
+          <span class="tech-cashback">Ganhe 10% de cashback</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Poliamida Tech products -->
+    <div class="tech-grid hidden" id="tab-poliamida">
+      <div class="tech-card">
+        <div class="tech-badge">-67%</div>
+        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Poliamida Preta" /></div>
+        <div class="tech-info">
+          <p class="tech-name">Camiseta - Poliamida Tech - Preta</p>
+          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+          <p class="tech-installment">Até 12x de R$ 5,40</p>
+          <span class="tech-cashback">Ganhe 10% de cashback</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-badge">-67%</div>
+        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Poliamida Cinza" /></div>
+        <div class="tech-info">
+          <p class="tech-name">Camiseta - Poliamida Tech - Cinza</p>
+          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+          <p class="tech-installment">Até 12x de R$ 5,40</p>
+          <span class="tech-cashback">Ganhe 10% de cashback</span>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-badge">-67%</div>
+        <div class="tech-img"><img src="Modelo_-_Camisa_Preta.webp" alt="Poliamida Navy" /></div>
+        <div class="tech-info">
+          <p class="tech-name">Camiseta - Poliamida Tech - Navy</p>
+          <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
+          <p class="tech-installment">Até 12x de R$ 5,40</p>
+          <span class="tech-cashback">Ganhe 10% de cashback</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flechas mobile tech -->
+    <div class="tech-mobile-nav" id="tech-nav-modal">
+      <div class="tech-progress-bg"><div class="tech-progress-fill" id="tech-fill-modal"></div></div>
+      <div class="products-arrows">
+        <button class="arrow-btn" id="tech-prev-modal" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="arrow-btn" id="tech-next-modal" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="tech-mobile-nav hidden" id="tech-nav-poliamida">
+      <div class="tech-progress-bg"><div class="tech-progress-fill" id="tech-fill-poliamida"></div></div>
+      <div class="products-arrows">
+        <button class="arrow-btn" id="tech-prev-poliamida" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="arrow-btn" id="tech-next-poliamida" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </section>
+
   <script>
     const hamburgerBtn  = document.getElementById('hamburgerBtn');
     const drawerClose   = document.getElementById('drawerClose');
@@ -907,6 +1577,179 @@
       drawer.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     }
+
+    // ── Tech carrossel mobile + tabs ──
+    (function () {
+      const initialized = {};
+
+      function buildCarousel(grid) {
+        if (!grid || initialized[grid.id] || window.innerWidth > 900) return;
+        initialized[grid.id] = true;
+
+        const tabKey    = grid.id.replace('tab-', '');
+        const btnPrev   = document.getElementById('tech-prev-' + tabKey);
+        const btnNext   = document.getElementById('tech-next-' + tabKey);
+        const fillEl    = document.getElementById('tech-fill-' + tabKey);
+
+        const origCards = Array.from(grid.children);
+        const N = origCards.length;
+        const COPIES = 3;
+
+        const track = document.createElement('div');
+        track.style.cssText = 'display:flex; will-change:transform;';
+        grid.innerHTML = '';
+        grid.appendChild(track);
+
+        for (let c = 0; c < COPIES * 2 + 1; c++) {
+          origCards.forEach(card => track.appendChild(card.cloneNode(true)));
+        }
+
+        let idx = COPIES * N;
+        let startX = 0, lastX = 0, dragging = false;
+
+        function cardW() { return track.children[0].offsetWidth + 12; }
+
+        function updateNav() {
+          if (!fillEl) return;
+          const real = ((idx - COPIES * N) % N + N) % N;
+          fillEl.style.width = ((real / (N - 1)) * 100) + '%';
+        }
+
+        function moveTo(i, anim) {
+          track.style.transition = anim
+            ? 'transform 0.65s cubic-bezier(0.25, 1, 0.5, 1)'
+            : 'none';
+          track.style.transform = `translateX(${-i * cardW()}px)`;
+          idx = i;
+          updateNav();
+        }
+
+        track.addEventListener('transitionend', () => {
+          const real = ((idx - COPIES * N) % N + N) % N;
+          if (idx < N || idx >= COPIES * 2 * N) moveTo(COPIES * N + real, false);
+        });
+
+        if (btnPrev) btnPrev.addEventListener('click', () => moveTo(idx - 1, true));
+        if (btnNext) btnNext.addEventListener('click', () => moveTo(idx + 1, true));
+
+        grid.addEventListener('touchstart', e => {
+          dragging = true;
+          startX = lastX = e.touches[0].clientX;
+          track.style.transition = 'none';
+        }, { passive: true });
+
+        grid.addEventListener('touchmove', e => {
+          if (!dragging) return;
+          lastX = e.touches[0].clientX;
+          const diff = lastX - startX;
+          if (Math.abs(diff) > 8) e.preventDefault();
+          track.style.transform = `translateX(${-idx * cardW() + diff}px)`;
+        }, { passive: false });
+
+        grid.addEventListener('touchend', () => {
+          if (!dragging) return;
+          dragging = false;
+          const diff = lastX - startX;
+          if      (diff < -50) moveTo(idx + 1, true);
+          else if (diff >  50) moveTo(idx - 1, true);
+          else                 moveTo(idx, true);
+        });
+
+        moveTo(idx, false);
+      }
+
+      // Inicializa tab ativa ao carregar
+      buildCarousel(document.getElementById('tab-modal'));
+
+      // Tabs
+      document.querySelectorAll('.tech-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tech-tab').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tech-grid').forEach(g => g.classList.add('hidden'));
+          document.querySelectorAll('.tech-mobile-nav').forEach(n => n.classList.add('hidden'));
+          btn.classList.add('active');
+          const key  = btn.dataset.tab;
+          const grid = document.getElementById('tab-' + key);
+          const nav  = document.getElementById('tech-nav-' + key);
+          grid.classList.remove('hidden');
+          if (nav) nav.classList.remove('hidden');
+          buildCarousel(grid);
+        });
+      });
+    })();
+
+    // ── Produtos carousel ──
+    (function () {
+      const viewport   = document.getElementById('productsViewport');
+      const track      = document.getElementById('productsTrack');
+      const fill       = document.getElementById('progressFill');
+      const btnPrev    = document.getElementById('prodPrev');
+      const btnNext    = document.getElementById('prodNext');
+      if (!track) return;
+
+      const cards      = Array.from(track.children);
+      const total      = cards.length;
+      let step         = 0;
+      let startX       = 0;
+      let lastX        = 0;
+      let dragging     = false;
+
+      function visibleCount() {
+        return window.innerWidth <= 900 ? 1 : 4;
+      }
+
+      function cardW() {
+        return cards[0].offsetWidth + 16; // 16 = gap
+      }
+
+      function maxStep() {
+        return total - visibleCount();
+      }
+
+      function updateUI() {
+        track.style.transform = `translateX(${-step * cardW()}px)`;
+        const pct = maxStep() > 0 ? (step / maxStep()) * 100 : 0;
+        fill.style.width = pct + '%';
+        btnPrev.disabled = step === 0;
+        btnNext.disabled = step >= maxStep();
+      }
+
+      btnNext.addEventListener('click', () => {
+        if (step < maxStep()) { step++; updateUI(); }
+      });
+
+      btnPrev.addEventListener('click', () => {
+        if (step > 0) { step--; updateUI(); }
+      });
+
+      // Touch/drag no mobile
+      viewport.addEventListener('touchstart', e => {
+        dragging = true;
+        startX = lastX = e.touches[0].clientX;
+        track.style.transition = 'none';
+      }, { passive: true });
+
+      viewport.addEventListener('touchmove', e => {
+        if (!dragging) return;
+        lastX = e.touches[0].clientX;
+        const diff = lastX - startX;
+        if (Math.abs(diff) > 8) e.preventDefault();
+        track.style.transform = `translateX(${-step * cardW() + diff}px)`;
+      }, { passive: false });
+
+      viewport.addEventListener('touchend', () => {
+        if (!dragging) return;
+        dragging = false;
+        track.style.transition = 'transform 0.55s cubic-bezier(0.25, 1, 0.5, 1)';
+        const diff = lastX - startX;
+        if (diff < -50 && step < maxStep())  step++;
+        else if (diff > 50 && step > 0)      step--;
+        updateUI();
+      });
+
+      window.addEventListener('resize', updateUI);
+      updateUI();
+    })();
 
     hamburgerBtn.addEventListener('click', openDrawer);
     drawerClose.addEventListener('click', closeDrawer);
