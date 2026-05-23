@@ -1547,6 +1547,399 @@
       }
     }
 
+    /* ─── DEPOIMENTOS ─── */
+    .reviews-section-title {
+      text-align: center;
+      padding: 0 24px;
+      margin-bottom: 32px;
+    }
+
+    .reviews-eyebrow {
+      font-family: 'Barlow', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .reviews-heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 44px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    @media (max-width: 480px) { .reviews-heading { font-size: 32px; } }
+
+    .reviews-section {
+      background: #000;
+      padding: 64px 0 72px;
+      overflow: hidden;
+    }
+
+    .reviews-top {
+      display: flex;
+      justify-content: center;
+      padding: 0 24px;
+      margin-bottom: 44px;
+    }
+
+    .reviews-badge {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+      border-radius: 16px;
+      padding: 20px 28px;
+    }
+
+    .reviews-score {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 54px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .reviews-badge-mid {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .reviews-stars-row {
+      color: #f59e0b;
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+
+    .reviews-source {
+      font-size: 13px;
+      color: #888;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .reviews-badge-sep {
+      width: 1px;
+      height: 48px;
+      background: #2e2e2e;
+      flex-shrink: 0;
+    }
+
+    .reviews-google-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .reviews-google-col svg { width: 32px; height: 32px; }
+
+    .reviews-google-col span {
+      font-size: 12px;
+      color: #888;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    .reviews-carousel-outer {
+      padding: 0 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .reviews-viewport {
+      overflow: hidden;
+    }
+
+    .reviews-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+
+    .review-card {
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+      border-radius: 16px;
+      padding: 24px;
+      flex: 0 0 calc(33.333% - 14px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .reviews-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .reviews-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .reviews-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #333;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s, width 0.2s;
+    }
+
+    .reviews-dot.active {
+      background: #fff;
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    /* Badge como primeiro card no mobile */
+    .review-badge-card {
+      flex: 0 0 calc(33.333% - 14px);
+      background: #1a1a1a;
+      border: 1px solid #2e2e2e;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .review-badge-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+    }
+
+    /* Desktop: badge card fica no carousel como 1º item normal */
+    /* Mobile: reviews-top some, badge card entra no carousel */
+    @media (max-width: 900px) {
+      .reviews-top      { display: none; }
+      .review-card      { flex: 0 0 80vw; }
+      .review-badge-card{ flex: 0 0 80vw; }
+    }
+
+    @media (max-width: 480px) {
+      .reviews-carousel-outer { padding: 0 16px; }
+      .review-card       { flex: 0 0 calc(100vw - 48px); padding: 20px; }
+      .review-badge-card { flex: 0 0 calc(100vw - 48px); padding: 20px; flex-wrap: wrap; }
+    }
+
+    /* Desktop: esconde badge card no carousel (já aparece no reviews-top acima) */
+    @media (min-width: 901px) {
+      .review-badge-card { display: none; }
+    }
+
+    .review-card-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .review-author {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .review-author strong { font-size: 15px; font-weight: 600; color: #fff; font-family: 'Barlow', sans-serif; }
+    .review-author span   { font-size: 12px; color: #888; font-family: 'Barlow', sans-serif; }
+    .review-g-icon        { width: 22px; height: 22px; flex-shrink: 0; }
+
+    .review-stars-time { display: flex; align-items: center; gap: 10px; }
+
+    .review-stars { color: #f59e0b; font-size: 16px; letter-spacing: 1px; }
+
+    .review-time { font-size: 12px; color: #555; font-family: 'Barlow', sans-serif; }
+
+    .review-text {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #bbb;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    /* ─── FAQ ─── */
+    .faq-section {
+      background: #111;
+      padding: 72px 24px;
+    }
+
+    .faq-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .faq-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 44px;
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      margin-bottom: 48px;
+    }
+
+    .faq-item { border-bottom: 1px solid #2e2e2e; }
+
+    .faq-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0;
+      color: #fff;
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .faq-btn svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      stroke: #666;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-btn svg { transform: rotate(180deg); }
+
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .faq-item.open .faq-body { max-height: 300px; }
+
+    .faq-body p {
+      padding-bottom: 22px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: #888;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    /* ─── CTA FINAL ─── */
+    .cta-section {
+      background: #fff;
+      padding: 88px 24px;
+      text-align: center;
+    }
+
+    .cta-inner {
+      max-width: 620px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .cta-super {
+      font-family: 'Barlow', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #999;
+    }
+
+    .cta-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 58px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      color: #000;
+      letter-spacing: -1px;
+    }
+
+    .cta-sub {
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      color: #666;
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    .cta-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #000;
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 34px;
+      border-radius: 100px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .cta-wa-btn:hover { opacity: 0.82; transform: translateY(-2px); }
+    .cta-wa-btn svg   { width: 22px; height: 22px; }
+
+    .cta-note {
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .cta-note strong { color: #f59e0b; }
+
+    @media (max-width: 900px) {
+      .reviews-badge { gap: 14px; padding: 16px 20px; }
+      .reviews-score { font-size: 44px; }
+      .cta-title { font-size: 44px; }
+    }
+
+    @media (max-width: 480px) {
+      .reviews-badge { flex-wrap: wrap; justify-content: center; text-align: center; gap: 12px; }
+      .reviews-badge-sep { display: none; }
+      .review-card { width: 280px; padding: 20px; }
+      .faq-title { font-size: 32px; }
+      .cta-title { font-size: 36px; }
+      .cta-sub { font-size: 15px; }
+    }
+
   </style>
 </head>
 <body>
@@ -1667,13 +2060,12 @@
         ★ O Melhor Custo Benefício do Brasil ★
       </a>
 
-      <!-- Cashback badge -->
+      <!-- Promo badge -->
       <div class="cashback-badge">
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#ccc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-          <line x1="7" y1="7" x2="7.01" y2="7"/>
+          <polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
         </svg>
-        <strong>10% de cashback</strong> na próxima compra
+        <strong>Frete grátis</strong> acima de R$299
       </div>
 
       <!-- Hero logo -->
@@ -1750,7 +2142,7 @@
             <p class="prod-name">Oversized - Zeus</p>
             <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
             <p class="prod-installment">Até 12x de R$ 6,48</p>
-            <span class="prod-cashback">Ganhe 10% de cashback</span>
+            <span class="prod-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1761,7 +2153,7 @@
             <p class="prod-name">Oversized - Shura</p>
             <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
             <p class="prod-installment">Até 12x de R$ 6,48</p>
-            <span class="prod-cashback">Ganhe 10% de cashback</span>
+            <span class="prod-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1772,7 +2164,7 @@
             <p class="prod-name">Oversized - Yakuza</p>
             <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
             <p class="prod-installment">Até 12x de R$ 6,48</p>
-            <span class="prod-cashback">Ganhe 10% de cashback</span>
+            <span class="prod-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1782,7 +2174,7 @@
             <p class="prod-name">Oversized - Chinken Guts</p>
             <p class="prod-price"><strong>R$ 69,90</strong></p>
             <p class="prod-installment">Até 12x de R$ 7,56</p>
-            <span class="prod-cashback">Ganhe 10% de cashback</span>
+            <span class="prod-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1793,7 +2185,7 @@
             <p class="prod-name">Oversized - Leg Day</p>
             <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
             <p class="prod-installment">Até 12x de R$ 6,48</p>
-            <span class="prod-cashback">Ganhe 10% de cashback</span>
+            <span class="prod-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1803,7 +2195,7 @@
             <p class="prod-name">Oversized - Tiger</p>
             <p class="prod-price"><strong>R$ 69,90</strong></p>
             <p class="prod-installment">Até 12x de R$ 7,56</p>
-            <span class="prod-cashback">Ganhe 10% de cashback</span>
+            <span class="prod-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1814,7 +2206,7 @@
             <p class="prod-name">Oversized - Warrior</p>
             <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
             <p class="prod-installment">Até 12x de R$ 6,48</p>
-            <span class="prod-cashback">Ganhe 10% de cashback</span>
+            <span class="prod-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1825,7 +2217,7 @@
             <p class="prod-name">Oversized - Viking</p>
             <p class="prod-price"><s>R$149,90</s> <strong>R$ 59,90</strong></p>
             <p class="prod-installment">Até 12x de R$ 6,48</p>
-            <span class="prod-cashback">Ganhe 10% de cashback</span>
+            <span class="prod-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1871,7 +2263,7 @@
             <p class="tech-name">Camiseta - Tech Modal - Preta</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1882,7 +2274,7 @@
             <p class="tech-name">Camiseta - Tech Modal - Azul Marinho</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1893,7 +2285,7 @@
             <p class="tech-name">Camiseta - Tech Modal - Chumbo</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1904,7 +2296,7 @@
             <p class="tech-name">Camiseta - Tech Modal - Branca</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1915,7 +2307,7 @@
             <p class="tech-name">Camiseta - Tech Modal - Verde</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1926,7 +2318,7 @@
             <p class="tech-name">Camiseta - Tech Modal - Vinho</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1971,7 +2363,7 @@
             <p class="tech-name">Camiseta - Poliamida Tech - Preta</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1982,7 +2374,7 @@
             <p class="tech-name">Camiseta - Poliamida Tech - Azul Marinho</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -1993,7 +2385,7 @@
             <p class="tech-name">Camiseta - Poliamida Tech - Chumbo</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -2004,7 +2396,7 @@
             <p class="tech-name">Camiseta - Poliamida Tech - Branca</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -2015,7 +2407,7 @@
             <p class="tech-name">Camiseta - Poliamida Tech - Verde</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -2026,7 +2418,7 @@
             <p class="tech-name">Camiseta - Poliamida Tech - Vinho</p>
             <p class="tech-price"><s>R$149,90</s> <strong>R$ 49,90</strong></p>
             <p class="tech-installment">Até 12x de R$ 5,40</p>
-            <span class="tech-cashback">Ganhe 10% de cashback</span>
+            <span class="tech-cashback">Frete grátis nessa peça</span>
           </div>
         </div>
 
@@ -2049,6 +2441,286 @@
       </div>
     </div>
 
+  </section>
+
+  <!-- ══════════════════════════════════════
+       DEPOIMENTOS
+  ══════════════════════════════════════ -->
+  <section class="reviews-section">
+
+    <div class="reviews-section-title">
+      <p class="reviews-eyebrow">Depoimentos</p>
+      <h2 class="reviews-heading">O que dizem nossos clientes</h2>
+    </div>
+
+    <div class="reviews-top">
+      <div class="reviews-badge">
+        <span class="reviews-score">4.9</span>
+        <div class="reviews-badge-mid">
+          <div class="reviews-stars-row">★★★★★</div>
+          <span class="reviews-source">Baseado em avaliações do Google</span>
+        </div>
+        <div class="reviews-badge-sep"></div>
+        <div class="reviews-google-col">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <span>Google</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-carousel-outer">
+      <div class="reviews-viewport" id="reviewsViewport">
+        <div class="reviews-track" id="reviewsTrack">
+
+          <!-- Badge card — visível só no mobile -->
+          <div class="review-badge-card">
+            <div class="review-badge-left">
+              <span class="reviews-score">4.9</span>
+              <div class="reviews-badge-mid">
+                <div class="reviews-stars-row">★★★★★</div>
+                <span class="reviews-source">Baseado em avaliações do Google</span>
+              </div>
+            </div>
+            <div class="reviews-badge-sep"></div>
+            <div class="reviews-google-col">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              <span>Google</span>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#1d4ed8">P</div>
+              <div class="review-author"><strong>Pedro A.</strong><span>Cliente verificado</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 2 semanas</span></div>
+            <p class="review-text">Melhor camiseta que já usei. O tecido é leve e não deforma depois de lavar. Comprei a Oversized e já quero a Tech Modal também.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#7c3aed">J</div>
+              <div class="review-author"><strong>Juliana R.</strong><span>Cliente verificada</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 1 mês</span></div>
+            <p class="review-text">Chegou rápido e bem embalada. O caimento é perfeito e o material é de qualidade. Super recomendo a Berzerk!</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#ea580c">M</div>
+              <div class="review-author"><strong>Marcos T.</strong><span>Cliente verificado</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 3 semanas</span></div>
+            <p class="review-text">Fiz a compra pelo WhatsApp e foi super fácil. Atendimento ótimo e a camiseta chegou no prazo. Já indiquei para os amigos.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#9333ea">A</div>
+              <div class="review-author"><strong>Ana L.</strong><span>Cliente verificada</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 5 dias</span></div>
+            <p class="review-text">Comprei 3 peças e todas ficaram ótimas. A Tech Modal é impressionante, muito mais confortável do que eu esperava.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#0d9488">R</div>
+              <div class="review-author"><strong>Rafael S.</strong><span>Cliente verificado</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 2 meses</span></div>
+            <p class="review-text">Chegou antes do prazo. A Oversized é perfeita, caimento incrível e o tecido não esquenta nem em dia de sol forte.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#db2777">C</div>
+              <div class="review-author"><strong>Camila F.</strong><span>Cliente verificada</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 3 semanas</span></div>
+            <p class="review-text">Finalmente achei uma camiseta oversized de qualidade. Vale muito o preço. Já fiz o segundo pedido e recomendei para a família toda.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#4f46e5">B</div>
+              <div class="review-author"><strong>Bruno M.</strong><span>Cliente verificado</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 1 semana</span></div>
+            <p class="review-text">Produto top, atendimento rápido no WhatsApp. Tirei todas as dúvidas em minutos e recebi no prazo combinado.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#16a34a">L</div>
+              <div class="review-author"><strong>Larissa C.</strong><span>Cliente verificada</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 2 semanas</span></div>
+            <p class="review-text">A Poliamida Tech é sensacional para treino. Leve, não abafa e ainda fica ótima com qualquer look do dia a dia.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#dc2626">D</div>
+              <div class="review-author"><strong>Diego R.</strong><span>Cliente verificado</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 1 mês</span></div>
+            <p class="review-text">Comprei para mim e para minha namorada. Os dois ficaram perfeitos. Tecido de alta qualidade e acabamento impecável.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#b45309">F</div>
+              <div class="review-author"><strong>Fernanda O.</strong><span>Cliente verificada</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 4 semanas</span></div>
+            <p class="review-text">Primeira compra pela Berzerk e já sou fã. O tecido é muito macio e o caimento da Oversized é exatamente o que eu buscava.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#0891b2">T</div>
+              <div class="review-author"><strong>Thiago B.</strong><span>Cliente verificado</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 6 dias</span></div>
+            <p class="review-text">Melhor custo-benefício do mercado. Paguei barato, recebi rápido e a qualidade superou minhas expectativas. Recomendo demais.</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#6366f1">I</div>
+              <div class="review-author"><strong>Isabela M.</strong><span>Cliente verificada</span></div>
+              <svg class="review-g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            </div>
+            <div class="review-stars-time"><span class="review-stars">★★★★★</span><span class="review-time">há 1 mês</span></div>
+            <p class="review-text">Usei na academia e na rua e a camiseta performou muito bem nos dois ambientes. Quero comprar mais cores da linha Poliamida.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="reviews-nav">
+        <button class="arrow-btn" id="reviewsPrev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="reviews-dots" id="reviewsDots"></div>
+        <button class="arrow-btn" id="reviewsNext" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════ -->
+  <section class="faq-section">
+    <div class="faq-inner">
+
+      <h2 class="faq-title">Dúvidas Frequentes</h2>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-btn">
+            <span>Qual o prazo de entrega?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>O prazo varia de 3 a 7 dias úteis dependendo da sua região. Após a confirmação do pagamento você recebe o código de rastreio direto no WhatsApp.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn">
+            <span>Quais tamanhos estão disponíveis?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>Trabalhamos com P, M, G e GG. Se tiver dúvida sobre o tamanho ideal, basta mandar uma mensagem no WhatsApp com sua altura e peso que a gente te orienta.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn">
+            <span>Como funciona a troca ou devolução?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>Aceitamos troca em até 7 dias corridos após o recebimento, desde que a peça esteja sem uso e com a etiqueta. Entre em contato pelo WhatsApp e cuidamos de tudo.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn">
+            <span>É seguro comprar pelo WhatsApp?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>Sim! O pagamento é feito via Pix ou link de pagamento com SSL, e você recebe comprovante na hora. Mais de 500 clientes já compraram com total segurança.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn">
+            <span>Posso parcelar minha compra?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>Sim! Você pode parcelar em até 12x pelo link de pagamento enviado no WhatsApp. Também aceitamos Pix com desconto imediato.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn">
+            <span>O tecido encolhe na lavagem?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>Não. Nossas peças são pré-lavadas e passam por controle de qualidade para garantir que o tamanho e o caimento se mantenham após as lavagens. Siga as instruções da etiqueta e sua camiseta dura muito mais.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn">
+            <span>Qual a diferença entre Oversized, Tech Modal e Poliamida Tech?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>A Oversized tem caimento amplo com tecido premium, ideal para o dia a dia. A Tech Modal é feita com modal macio de alta performance, perfeita para quem não para. Já a Poliamida Tech é ultraleve e respirável, desenvolvida para atividades físicas e uso nas ruas.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-btn">
+            <span>Vocês fazem entrega para todo o Brasil?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body"><p>Sim! Entregamos para todo o território nacional via Correios ou transportadora parceira. Pedidos acima de R$299 têm frete grátis independente da região.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CTA FINAL
+  ══════════════════════════════════════ -->
+  <section class="cta-section" id="contato">
+    <div class="cta-inner">
+      <p class="cta-super">Oferta por tempo limitado</p>
+      <h2 class="cta-title">Pronto para entrar no modo Berzerk?</h2>
+      <p class="cta-sub">Frete grátis acima de R$299 · Parcele em até 12x.<br>Escolha sua camiseta e peça agora pelo WhatsApp.</p>
+      <a href="https://wa.me/SEUNUMERO" class="cta-wa-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.127 1.528 5.862L0 24l6.294-1.499A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.932 9.932 0 0 1-5.13-1.425l-.37-.22-3.724.977.994-3.633-.243-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm5.47-7.538c-.3-.15-1.775-.877-2.05-.977-.274-.1-.474-.15-.673.15-.2.3-.774.977-.948 1.177-.175.2-.35.225-.65.075-.3-.15-1.267-.468-2.413-1.49-.892-.797-1.494-1.781-1.67-2.08-.176-.3-.019-.463.131-.612.135-.135.3-.351.45-.526.15-.176.2-.301.3-.501.1-.2.05-.376-.025-.526-.075-.15-.673-1.627-.924-2.228-.244-.585-.492-.506-.673-.515l-.576-.01c-.2 0-.526.075-.8.376-.276.3-1.052 1.027-1.052 2.504 0 1.477 1.077 2.904 1.226 3.105.15.2 2.12 3.234 5.13 4.535.717.31 1.275.494 1.712.632.719.229 1.373.197 1.89.12.576-.086 1.775-.726 2.025-1.427.25-.7.25-1.3.175-1.427-.075-.126-.276-.2-.576-.351z"/></svg>
+        Pedir no WhatsApp
+      </a>
+      <p class="cta-note"><strong>★★★★★</strong> Mais de 500 clientes satisfeitos</p>
+    </div>
   </section>
 
   <!-- ══════════════════════════════════════
@@ -2084,13 +2756,15 @@
         </div>
       </div>
 
-      <!-- Site seguro -->
+      <!-- Promoções -->
       <div class="footer-col">
-        <h4 class="footer-col-title">Site Seguro</h4>
-        <div class="footer-seals">
-          <img src="GOOGLE_BRANCO.webp" alt="Google Site Seguro" class="seal-img" />
-          <img src="NORTON_RBANCO.webp" alt="Norton Secured" class="seal-img" />
-        </div>
+        <h4 class="footer-col-title">Nossas Promoções</h4>
+        <ul class="footer-links">
+          <li><a href="#">🚚 Frete grátis acima de R$299</a></li>
+          <li><a href="#">💳 Parcele em até 12x sem juros</a></li>
+          <li><a href="#">🔄 Troca fácil em 7 dias</a></li>
+          <li><a href="#">🏷️ Até 67% OFF nas ofertas</a></li>
+        </ul>
       </div>
 
     </div>
@@ -2141,7 +2815,7 @@
         </div>
         <div class="modal-price-main" id="modalPriceMain"></div>
         <div class="modal-installments" id="modalInstallments"></div>
-        <div class="modal-cashback-pill">% 10% de cashback na próxima compra</div>
+        <div class="modal-cashback-pill">🎁 Frete grátis acima de R$299</div>
 
         <div class="modal-size-row">
           <p class="modal-size-label">Tamanho: <span id="modalSelectedSize">P</span></p>
@@ -2220,7 +2894,7 @@
           <div class="modal-info-items">
             <div class="modal-info-item">
               <svg viewBox="0 0 24 24"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
-              <div class="modal-info-item-text">10% de Cashback na próxima compra.<a href="#">Saiba mais sobre o cashback.</a></div>
+              <div class="modal-info-item-text">Frete grátis para pedidos acima de R$299.</div>
             </div>
             <div class="modal-info-item">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
@@ -2623,6 +3297,87 @@
       attachCards();
       document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
     })();
+
+    // ── Reviews carousel ──
+    (function () {
+      const viewport = document.getElementById('reviewsViewport');
+      const track    = document.getElementById('reviewsTrack');
+      const dotsEl   = document.getElementById('reviewsDots');
+      const btnPrev  = document.getElementById('reviewsPrev');
+      const btnNext  = document.getElementById('reviewsNext');
+      if (!track) return;
+
+      const allCards = Array.from(track.children);
+      let step     = 0;
+      let startX   = 0;
+      let lastX    = 0;
+      let dragging = false;
+
+      // Filtra cards visíveis (badge card é display:none no desktop)
+      function activeCards() { return allCards.filter(c => c.offsetParent !== null); }
+      function visibleCount() { return window.innerWidth <= 900 ? 1 : 3; }
+      function cardW()        { const a = activeCards(); return a.length ? a[0].offsetWidth + 20 : 0; }
+      function maxStep()      { return Math.max(0, activeCards().length - visibleCount()); }
+
+      function buildDots() {
+        dotsEl.innerHTML = '';
+        const ms = maxStep();
+        for (let i = 0; i <= ms; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'reviews-dot' + (i === step ? ' active' : '');
+          dot.setAttribute('aria-label', 'Depoimento ' + (i + 1));
+          dot.addEventListener('click', () => { step = i; updateUI(); });
+          dotsEl.appendChild(dot);
+        }
+      }
+
+      function updateUI() {
+        step = Math.min(step, maxStep());
+        track.style.transform = `translateX(${-step * cardW()}px)`;
+        btnPrev.disabled = step === 0;
+        btnNext.disabled = step >= maxStep();
+        dotsEl.querySelectorAll('.reviews-dot').forEach((d, i) => d.classList.toggle('active', i === step));
+      }
+
+      btnNext.addEventListener('click', () => { if (step < maxStep()) { step++; updateUI(); } });
+      btnPrev.addEventListener('click', () => { if (step > 0)         { step--; updateUI(); } });
+
+      viewport.addEventListener('touchstart', e => {
+        dragging = true; startX = lastX = e.touches[0].clientX;
+        track.style.transition = 'none';
+      }, { passive: true });
+
+      viewport.addEventListener('touchmove', e => {
+        if (!dragging) return;
+        lastX = e.touches[0].clientX;
+        const diff = lastX - startX;
+        if (Math.abs(diff) > 8) e.preventDefault();
+        track.style.transform = `translateX(${-step * cardW() + diff}px)`;
+      }, { passive: false });
+
+      viewport.addEventListener('touchend', () => {
+        if (!dragging) return; dragging = false;
+        track.style.transition = 'transform 0.55s cubic-bezier(0.25, 1, 0.5, 1)';
+        const diff = lastX - startX;
+        if (diff < -50 && step < maxStep()) step++;
+        else if (diff > 50 && step > 0)    step--;
+        updateUI();
+      });
+
+      window.addEventListener('resize', () => { buildDots(); updateUI(); });
+      buildDots();
+      updateUI();
+    })();
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
   </script>
 </body>
 </html>
