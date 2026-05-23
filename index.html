@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Berzerk — Entre no Modo Berzerk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray-muted: #6b6b6b;
+      --gray-text: #999999;
+      --card-bg: #1a1a1a;
+      --border: #2e2e2e;
+      --border-light: #3a3a3a;
+      --announcement-bg: #ffffff;
+      --nav-height-desktop: 68px;
+      --nav-height-mobile: 56px;
+      --announcement-height: 38px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── ANNOUNCEMENT BAR ─── */
+    .announcement-bar {
+      background: var(--announcement-bg);
+      color: #111;
+      text-align: center;
+      padding: 0 16px;
+      height: var(--announcement-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-family: 'Barlow', sans-serif;
+      letter-spacing: 0.01em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .announcement-bar strong {
+      font-weight: 700;
+    }
+
+    /* ─── HEADER / NAV ─── */
+    .header {
+      background: var(--black);
+      position: sticky;
+      top: var(--announcement-height);
+      z-index: 999;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-height-desktop);
+      padding: 0 24px;
+      max-width: 1440px;
+      margin: 0 auto;
+      gap: 16px;
+    }
+
+    /* Logo */
+    .logo {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      width: 52px;
+    }
+
+    .logo svg {
+      width: 46px;
+      height: 46px;
+      fill: var(--white);
+      transition: opacity 0.2s;
+    }
+
+    .logo:hover svg { opacity: 0.8; }
+
+    /* Desktop nav links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      list-style: none;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 500;
+      font-size: 13.5px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover { opacity: 0.6; }
+
+    /* Right icons */
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .icon-btn {
+      position: relative;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+
+    .icon-btn:hover { opacity: 0.6; }
+
+    .icon-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--white);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .badge {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      background: var(--white);
+      color: var(--black);
+      font-size: 9px;
+      font-weight: 700;
+      font-family: 'Barlow', sans-serif;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    /* Hamburger — hidden on desktop */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 8px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--white);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* Logo centered on mobile */
+    .logo-mobile {
+      display: none;
+    }
+
+    /* ─── MOBILE DRAWER ─── */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .drawer-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: min(320px, 85vw);
+      background: #111111;
+      z-index: 1200;
+      transform: translateX(-100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .drawer-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      color: var(--white);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .drawer-close:hover { opacity: 1; }
+
+    .drawer-close svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--white);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+    }
+
+    .drawer-nav {
+      list-style: none;
+      flex: 1;
+    }
+
+    .drawer-nav li {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .drawer-nav li a {
+      display: block;
+      padding: 18px 20px;
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: background 0.15s, padding-left 0.15s;
+    }
+
+    .drawer-nav li a:hover {
+      background: #1a1a1a;
+      padding-left: 28px;
+    }
+
+    .drawer-nav .favoritos a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-family: 'Barlow', sans-serif;
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+      color: #ccc;
+    }
+
+    .drawer-nav .favoritos svg {
+      width: 18px;
+      height: 18px;
+      stroke: #ccc;
+      fill: none;
+      stroke-width: 1.6;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - var(--announcement-height) - var(--nav-height-desktop));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* Placeholder background — replace src with actual image */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.65) 100%),
+        /* Simulated gym atmosphere with CSS */
+        radial-gradient(ellipse at 30% 60%, #1a1a1a 0%, transparent 60%),
+        radial-gradient(ellipse at 75% 40%, #141414 0%, transparent 55%),
+        #0a0a0a;
+      /* When you have the actual background image: */
+      /* background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpg'); */
+      /* background-size: cover; */
+      /* background-position: center; */
+    }
+
+    /* Noise texture overlay for depth */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      padding: 60px 24px;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: 0.28em;
+      color: var(--gray-muted);
+      text-transform: uppercase;
+      animation: fadeUp 0.9s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(80px, 14vw, 160px);
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      text-transform: uppercase;
+      animation: fadeUp 0.9s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    /* Price Card */
+    .price-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 22px 48px 24px;
+      text-align: center;
+      animation: fadeUp 0.9s 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
+      min-width: 260px;
+    }
+
+    .price-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--gray-text);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .price-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 62px;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1px;
+    }
+
+    .price-currency {
+      font-size: 38px;
+      margin-top: 6px;
+      font-weight: 700;
+    }
+
+    .price-cents {
+      font-size: 26px;
+      margin-top: 8px;
+      font-weight: 700;
+      color: #ccc;
+    }
+
+    /* Pill CTA */
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 100px;
+      padding: 13px 28px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.22s, border-color 0.22s, color 0.22s;
+      animation: fadeUp 0.9s 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+      text-decoration: none;
+    }
+
+    .hero-cta:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    /* Cashback badge */
+    .cashback-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      color: #ccc;
+      animation: fadeUp 0.9s 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .cashback-badge strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* Hero logo */
+    .hero-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: fadeUp 0.9s 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+      margin-top: 8px;
+    }
+
+    .hero-logo svg {
+      width: 36px;
+      height: 36px;
+      fill: var(--white);
+    }
+
+    .hero-logo-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 28px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .logo { display: none; }
+      .hamburger { display: flex; }
+      .logo-mobile { display: flex; }
+
+      .nav-inner {
+        padding: 0 12px;
+        height: var(--nav-height-mobile);
+      }
+
+      .hero {
+        min-height: calc(100vh - var(--announcement-height) - var(--nav-height-mobile));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .price-card { padding: 18px 32px 20px; min-width: 220px; }
+      .price-value { font-size: 52px; }
+      .price-currency { font-size: 30px; }
+      .price-cents { font-size: 22px; }
+      .hero-cta { font-size: 11px; padding: 11px 20px; letter-spacing: 0.1em; }
+      .cashback-badge { font-size: 12px; padding: 8px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       ANNOUNCEMENT BAR
+  ══════════════════════════════════════ -->
+  <div class="announcement-bar">
+    <strong>FRETE GRÁTIS</strong>&nbsp;em compras acima de R$299
+  </div>
+
+  <!-- ══════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════ -->
+  <header class="header">
+    <nav class="nav-inner">
+
+      <!-- Hamburger (mobile only) -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Logo desktop -->
+      <a href="#" class="logo" aria-label="Berzerk">
+        <!-- Berzerk athlete silhouette SVG -->
+        <svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+          <!-- Head -->
+          <ellipse cx="62" cy="10" rx="9" ry="9.5"/>
+          <!-- Body torso -->
+          <path d="M52 19 C44 22 40 30 42 40 L46 55 L62 55 L68 40 C72 30 70 22 62 19 Z"/>
+          <!-- Left arm raised back -->
+          <path d="M42 22 C34 18 26 14 20 8 C18 6 20 4 22 5 C28 10 36 16 44 26 Z"/>
+          <!-- Right arm forward/bent -->
+          <path d="M68 24 C76 20 84 22 90 28 C92 30 90 33 88 32 C82 27 75 26 66 28 Z"/>
+          <!-- Left leg -->
+          <path d="M46 55 L40 80 L36 100 C35 103 39 104 41 102 L48 82 L52 58 Z"/>
+          <!-- Right leg bent/forward -->
+          <path d="M62 55 L66 78 L72 98 C73 101 77 100 76 97 L68 76 L64 57 Z"/>
+        </svg>
+      </a>
+
+      <!-- Logo mobile (centered) -->
+      <a href="#" class="logo logo-mobile" aria-label="Berzerk">
+        <svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" style="width:38px;height:38px;fill:#fff;">
+          <ellipse cx="62" cy="10" rx="9" ry="9.5"/>
+          <path d="M52 19 C44 22 40 30 42 40 L46 55 L62 55 L68 40 C72 30 70 22 62 19 Z"/>
+          <path d="M42 22 C34 18 26 14 20 8 C18 6 20 4 22 5 C28 10 36 16 44 26 Z"/>
+          <path d="M68 24 C76 20 84 22 90 28 C92 30 90 33 88 32 C82 27 75 26 66 28 Z"/>
+          <path d="M46 55 L40 80 L36 100 C35 103 39 104 41 102 L48 82 L52 58 Z"/>
+          <path d="M62 55 L66 78 L72 98 C73 101 77 100 76 97 L68 76 L64 57 Z"/>
+        </svg>
+      </a>
+
+      <!-- Desktop nav links -->
+      <ul class="nav-links">
+        <li><a href="#">RUX</a></li>
+        <li><a href="#">Hello Kitty</a></li>
+        <li><a href="#">Soldier Mentality</a></li>
+        <li><a href="#">Freaky Season</a></li>
+        <li><a href="#">Oversized</a></li>
+        <li><a href="#">Shorts de Compressão</a></li>
+        <li><a href="#">Tech Modal</a></li>
+        <li><a href="#">Poliamida Tech</a></li>
+        <li><a href="#">Outlet</a></li>
+      </ul>
+
+      <!-- Right icons -->
+      <div class="nav-icons">
+        <!-- Search -->
+        <button class="icon-btn" aria-label="Buscar">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+        </button>
+        <!-- Wishlist -->
+        <button class="icon-btn" aria-label="Lista de desejos">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="badge">0</span>
+        </button>
+        <!-- Cart -->
+        <button class="icon-btn" aria-label="Carrinho">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="badge">0</span>
+        </button>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- ══════════════════════════════════════
+       MOBILE DRAWER OVERLAY
+  ══════════════════════════════════════ -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <span class="drawer-title">Menu</span>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <ul class="drawer-nav">
+      <li><a href="#">RUX</a></li>
+      <li><a href="#">Hello Kitty</a></li>
+      <li><a href="#">Soldier Mentality</a></li>
+      <li><a href="#">Freaky Season</a></li>
+      <li><a href="#">Oversized</a></li>
+      <li><a href="#">Shorts de Compressão</a></li>
+      <li><a href="#">Tech Modal</a></li>
+      <li><a href="#">Poliamida Tech</a></li>
+      <li><a href="#">Outlet</a></li>
+      <li class="favoritos">
+        <a href="#">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Lista de favoritos
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- ══════════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+      <p class="hero-subtitle">Entre no Modo Berzerk</p>
+
+      <h1 class="hero-title">Oversized</h1>
+
+      <!-- Price card -->
+      <div class="price-card">
+        <p class="price-label">A partir de</p>
+        <div class="price-value">
+          <span class="price-currency">R$</span>
+          <span>59</span>
+          <span class="price-cents">,90</span>
+        </div>
+      </div>
+
+      <!-- CTA pill -->
+      <a href="#" class="hero-cta">
+        + O Melhor Custo Benefício do Brasil +
+      </a>
+
+      <!-- Cashback badge -->
+      <div class="cashback-badge">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#ccc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+          <line x1="7" y1="7" x2="7.01" y2="7"/>
+        </svg>
+        <strong>10% de cashback</strong> na próxima compra
+      </div>
+
+      <!-- Hero logo -->
+      <div class="hero-logo">
+        <svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="62" cy="10" rx="9" ry="9.5"/>
+          <path d="M52 19 C44 22 40 30 42 40 L46 55 L62 55 L68 40 C72 30 70 22 62 19 Z"/>
+          <path d="M42 22 C34 18 26 14 20 8 C18 6 20 4 22 5 C28 10 36 16 44 26 Z"/>
+          <path d="M68 24 C76 20 84 22 90 28 C92 30 90 33 88 32 C82 27 75 26 66 28 Z"/>
+          <path d="M46 55 L40 80 L36 100 C35 103 39 104 41 102 L48 82 L52 58 Z"/>
+          <path d="M62 55 L66 78 L72 98 C73 101 77 100 76 97 L68 76 L64 57 Z"/>
+        </svg>
+        <span class="hero-logo-text">Berzerk</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const hamburgerBtn  = document.getElementById('hamburgerBtn');
+    const drawerClose   = document.getElementById('drawerClose');
+    const drawer        = document.getElementById('drawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      drawerOverlay.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      drawerOverlay.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    hamburgerBtn.addEventListener('click', openDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', closeDrawer);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeDrawer();
+    });
+  </script>
+</body>
+</html>
