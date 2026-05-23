@@ -82,17 +82,15 @@
       display: flex;
       align-items: center;
       text-decoration: none;
-      width: 52px;
     }
 
-    .logo svg {
-      width: 46px;
+    .logo img {
       height: 46px;
-      fill: var(--white);
+      width: auto;
       transition: opacity 0.2s;
     }
 
-    .logo:hover svg { opacity: 0.8; }
+    .logo:hover img { opacity: 0.8; }
 
     /* Desktop nav links */
     .nav-links {
@@ -331,29 +329,25 @@
       background: #000;
     }
 
-    /* Placeholder background — replace src with actual image */
     .hero-bg {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.65) 100%),
-        /* Simulated gym atmosphere with CSS */
-        radial-gradient(ellipse at 30% 60%, #1a1a1a 0%, transparent 60%),
-        radial-gradient(ellipse at 75% 40%, #141414 0%, transparent 55%),
-        #0a0a0a;
-      /* When you have the actual background image: */
-      /* background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpg'); */
-      /* background-size: cover; */
-      /* background-position: center; */
     }
 
-    /* Noise texture overlay for depth */
+    .hero-bg picture,
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.12;
+      background: rgba(0,0,0,0.72);
       pointer-events: none;
     }
 
@@ -387,7 +381,7 @@
     .hero-title {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 900;
-      font-size: clamp(80px, 14vw, 160px);
+      font-size: clamp(60px, 10vw, 120px);
       line-height: 0.9;
       letter-spacing: -0.01em;
       color: var(--white);
@@ -397,7 +391,8 @@
 
     /* Price Card */
     .price-card {
-      background: var(--card-bg);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 16px;
       padding: 22px 48px 24px;
       text-align: center;
@@ -409,36 +404,42 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 400;
       font-size: 12px;
-      letter-spacing: 0.2em;
-      color: var(--gray-text);
+      letter-spacing: 0.22em;
+      color: #888;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .price-value {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 900;
-      font-size: 62px;
-      line-height: 1;
       color: var(--white);
-      letter-spacing: -0.01em;
       display: flex;
-      align-items: flex-start;
+      align-items: flex-end;
       justify-content: center;
-      gap: 1px;
+      gap: 2px;
+      line-height: 1;
     }
 
     .price-currency {
-      font-size: 38px;
-      margin-top: 6px;
-      font-weight: 700;
+      font-size: 56px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .price-main {
+      font-size: 76px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1;
     }
 
     .price-cents {
       font-size: 26px;
-      margin-top: 8px;
-      font-weight: 700;
-      color: #ccc;
+      font-weight: 900;
+      align-self: flex-start;
+      padding-top: 8px;
+      color: var(--white);
     }
 
     /* Pill CTA */
@@ -446,7 +447,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 1px solid rgba(255,255,255,0.35);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 100px;
       padding: 13px 28px;
       font-family: 'Barlow Condensed', sans-serif;
@@ -455,16 +456,16 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--white);
-      background: transparent;
+      background: rgba(255,255,255,0.08);
       cursor: pointer;
-      transition: background 0.22s, border-color 0.22s, color 0.22s;
+      transition: background 0.22s, border-color 0.22s;
       animation: fadeUp 0.9s 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
       text-decoration: none;
     }
 
     .hero-cta:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.25);
     }
 
     /* Cashback badge */
@@ -491,24 +492,14 @@
     .hero-logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
       animation: fadeUp 0.9s 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
       margin-top: 8px;
     }
 
-    .hero-logo svg {
-      width: 36px;
-      height: 36px;
-      fill: var(--white);
-    }
-
-    .hero-logo-text {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 28px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--white);
+    .hero-logo img {
+      height: 52px;
+      width: auto;
     }
 
     /* ─── RESPONSIVE ─── */
@@ -562,33 +553,12 @@
 
       <!-- Logo desktop -->
       <a href="#" class="logo" aria-label="Berzerk">
-        <!-- Berzerk athlete silhouette SVG -->
-        <svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
-          <!-- Head -->
-          <ellipse cx="62" cy="10" rx="9" ry="9.5"/>
-          <!-- Body torso -->
-          <path d="M52 19 C44 22 40 30 42 40 L46 55 L62 55 L68 40 C72 30 70 22 62 19 Z"/>
-          <!-- Left arm raised back -->
-          <path d="M42 22 C34 18 26 14 20 8 C18 6 20 4 22 5 C28 10 36 16 44 26 Z"/>
-          <!-- Right arm forward/bent -->
-          <path d="M68 24 C76 20 84 22 90 28 C92 30 90 33 88 32 C82 27 75 26 66 28 Z"/>
-          <!-- Left leg -->
-          <path d="M46 55 L40 80 L36 100 C35 103 39 104 41 102 L48 82 L52 58 Z"/>
-          <!-- Right leg bent/forward -->
-          <path d="M62 55 L66 78 L72 98 C73 101 77 100 76 97 L68 76 L64 57 Z"/>
-        </svg>
+        <img src="logoheader.avif" alt="Berzerk" />
       </a>
 
       <!-- Logo mobile (centered) -->
       <a href="#" class="logo logo-mobile" aria-label="Berzerk">
-        <svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" style="width:38px;height:38px;fill:#fff;">
-          <ellipse cx="62" cy="10" rx="9" ry="9.5"/>
-          <path d="M52 19 C44 22 40 30 42 40 L46 55 L62 55 L68 40 C72 30 70 22 62 19 Z"/>
-          <path d="M42 22 C34 18 26 14 20 8 C18 6 20 4 22 5 C28 10 36 16 44 26 Z"/>
-          <path d="M68 24 C76 20 84 22 90 28 C92 30 90 33 88 32 C82 27 75 26 66 28 Z"/>
-          <path d="M46 55 L40 80 L36 100 C35 103 39 104 41 102 L48 82 L52 58 Z"/>
-          <path d="M62 55 L66 78 L72 98 C73 101 77 100 76 97 L68 76 L64 57 Z"/>
-        </svg>
+        <img src="logoheader.avif" alt="Berzerk" style="height:38px;" />
       </a>
 
       <!-- Desktop nav links -->
@@ -661,7 +631,12 @@
        HERO SECTION
   ══════════════════════════════════════ -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg">
+      <picture>
+        <source media="(max-width: 900px)" srcset="batch_Banner_Principal_-_Op5_-_Mobile.webp" />
+        <img src="batch_Banner_Principal_-_Op5_-_Desktop.webp" alt="Hero Berzerk" />
+      </picture>
+    </div>
 
     <div class="hero-content">
       <p class="hero-subtitle">Entre no Modo Berzerk</p>
@@ -673,7 +648,7 @@
         <p class="price-label">A partir de</p>
         <div class="price-value">
           <span class="price-currency">R$</span>
-          <span>59</span>
+          <span class="price-main">59</span>
           <span class="price-cents">,90</span>
         </div>
       </div>
@@ -694,15 +669,7 @@
 
       <!-- Hero logo -->
       <div class="hero-logo">
-        <svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="62" cy="10" rx="9" ry="9.5"/>
-          <path d="M52 19 C44 22 40 30 42 40 L46 55 L62 55 L68 40 C72 30 70 22 62 19 Z"/>
-          <path d="M42 22 C34 18 26 14 20 8 C18 6 20 4 22 5 C28 10 36 16 44 26 Z"/>
-          <path d="M68 24 C76 20 84 22 90 28 C92 30 90 33 88 32 C82 27 75 26 66 28 Z"/>
-          <path d="M46 55 L40 80 L36 100 C35 103 39 104 41 102 L48 82 L52 58 Z"/>
-          <path d="M62 55 L66 78 L72 98 C73 101 77 100 76 97 L68 76 L64 57 Z"/>
-        </svg>
-        <span class="hero-logo-text">Berzerk</span>
+        <img src="logohero1.webp" alt="Berzerk" />
       </div>
     </div>
   </section>
